@@ -1,0 +1,20 @@
+@use 'sass:color'
+@use 'colors' as *
+
+// Tab content panels
+.x-stockists
+  .tab-content
+    display: none
+    background: $w
+    // border: 1px solid $border-color
+    border-radius: 0 5px 5px 5px
+    padding: 16px
+    
+    @media screen and (max-width: 767px)
+      padding-left: 0
+      padding-right: 0
+
+    &.active
+      display: block
+
+    
