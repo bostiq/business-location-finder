@@ -1,0 +1,47 @@
+@use 'sass:color'
+@use 'colors' as *
+
+.x-stockists
+  h1, h2, h3
+    font-family: 'Zion',Helvetica,Arial,Lucida,sans-serif
+    text-transform: uppercase
+    font-size: 2.7em
+    // color: #9D2C43 !important
+    letter-spacing: 1px
+    text-align: left
+
+  h4, p
+    font-family: 'Zen Maru Gothic',Helvetica,Arial,Lucida,sans-serif
+  p
+    font-weight: 400
+    line-height: 1.8em
+    font-size: 1rem
+
+  a 
+    color: $links
+    text-decoration: none
+    font-size: 1rem
+
+    &:hover
+      text-decoration: underline
+
+
+  .card
+    > *
+      line-height: 0
+
+    h4
+      // margin-top: 0
+      font-size: 1.2em
+      line-height: 1.2em
+      // margin-bottom: 4px 
+      text-transform: uppercase
+
+    .biz-address
+      a
+        color: $dark-gray
+
+    .biz-meta, .biz-address, .biz-instagram
+      font-weight: 500
+      font-size: 1em
+      line-height: 1em

@@ -1,0 +1,596 @@
+<div class="et_pb_column et_pb_column_4_4 et_pb_column_0  et_pb_css_mix_blend_mode_passthrough et-last-child">
+
+
+
+
+  <div class="et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_light">
+
+
+
+
+    <div class="et_pb_text_inner">
+      <h4>Short code: “biz_location_finder”</h4>
+      <p>
+      </p>
+      <div class="x-stockists" id="blf-68f9fce603c95">
+        <!-- TABS NAVIGATION - Will be populated dynamically by JavaScript -->
+        <div class="tabs">
+          <ul class="tab-nav">
+            <!-- Dynamic tabs will be inserted here -->
+            <li class="tab-menu-item active" data-tab="all" data-container="blf-68f9fce603c95">All<div
+                class="counter-badge">3</div>
+            </li>
+            <li class="tab-menu-item" data-tab="north" data-container="blf-68f9fce603c95">North<div
+                class="counter-badge">1</div>
+            </li>
+            <li class="tab-menu-item" data-tab="south" data-container="blf-68f9fce603c95">South<div
+                class="counter-badge">1</div>
+            </li>
+            <li class="tab-menu-item" data-tab="west" data-container="blf-68f9fce603c95">West<div class="counter-badge">
+                1</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- TABS CONTENT - Will be populated dynamically by JavaScript -->
+        <div class="tab-panels">
+          <!-- Dynamic tab panels will be inserted here -->
+          <div class="tab-content active" id="blf-68f9fce603c95-all" data-tab="all" data-category="All">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce603c95-north" data-tab="north" data-category="North">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce603c95-south" data-tab="south" data-category="South">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce603c95-west" data-tab="west" data-category="West">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p></p>
+    </div>
+  </div>
+  <div class="et_pb_module et_pb_text et_pb_text_1  et_pb_text_align_left et_pb_bg_layout_light">
+
+
+
+
+    <div class="et_pb_text_inner">
+      <h4>Short code: “biz_location_finder categories=’North’ “</h4>
+      <p>
+      </p>
+      <div class="x-stockists" id="blf-68f9fce6046ab" data-categories="North">
+        <!-- TABS NAVIGATION - Will be populated dynamically by JavaScript -->
+        <div class="tabs">
+          <ul class="tab-nav">
+            <!-- Dynamic tabs will be inserted here -->
+            <li class="tab-menu-item active" data-tab="north" data-container="blf-68f9fce6046ab">North<div
+                class="counter-badge">1</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- TABS CONTENT - Will be populated dynamically by JavaScript -->
+        <div class="tab-panels">
+          <!-- Dynamic tab panels will be inserted here -->
+          <div class="tab-content active" id="blf-68f9fce6046ab-north" data-tab="north" data-category="North">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="et_pb_module et_pb_text et_pb_text_2  et_pb_text_align_left et_pb_bg_layout_light">
+
+
+
+
+    <div class="et_pb_text_inner">
+      <h4>Short code: biz_location_finder counters=”false”</h4>
+      <p>
+      </p>
+      <div class="x-stockists" id="blf-68f9fce604e76" data-counters-disabled="true">
+        <!-- TABS NAVIGATION - Will be populated dynamically by JavaScript -->
+        <div class="tabs">
+          <ul class="tab-nav">
+            <!-- Dynamic tabs will be inserted here -->
+            <li class="tab-menu-item active" data-tab="all" data-container="blf-68f9fce604e76">All</li>
+            <li class="tab-menu-item" data-tab="north" data-container="blf-68f9fce604e76">North</li>
+            <li class="tab-menu-item" data-tab="south" data-container="blf-68f9fce604e76">South</li>
+            <li class="tab-menu-item" data-tab="west" data-container="blf-68f9fce604e76">West</li>
+          </ul>
+        </div>
+
+        <!-- TABS CONTENT - Will be populated dynamically by JavaScript -->
+        <div class="tab-panels">
+          <!-- Dynamic tab panels will be inserted here -->
+          <div class="tab-content active" id="blf-68f9fce604e76-all" data-tab="all" data-category="All">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce604e76-north" data-tab="north" data-category="North">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce604e76-south" data-tab="south" data-category="South">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce604e76-west" data-tab="west" data-category="West">
+
+            <div class="controls">
+              <input class="search-input" type="text" placeholder="Search by business name or suburb…">
+            </div>
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="et_pb_module et_pb_text et_pb_text_3  et_pb_text_align_left et_pb_bg_layout_light">
+
+
+
+
+    <div class="et_pb_text_inner">
+      <h4>Short code: biz_location_finder search=”false”</h4>
+      <p>
+      </p>
+      <div class="x-stockists" id="blf-68f9fce6055e6" data-search-disabled="true">
+        <!-- TABS NAVIGATION - Will be populated dynamically by JavaScript -->
+        <div class="tabs">
+          <ul class="tab-nav">
+            <!-- Dynamic tabs will be inserted here -->
+            <li class="tab-menu-item active" data-tab="all" data-container="blf-68f9fce6055e6">All<div
+                class="counter-badge">3</div>
+            </li>
+            <li class="tab-menu-item" data-tab="north" data-container="blf-68f9fce6055e6">North<div
+                class="counter-badge">1</div>
+            </li>
+            <li class="tab-menu-item" data-tab="south" data-container="blf-68f9fce6055e6">South<div
+                class="counter-badge">1</div>
+            </li>
+            <li class="tab-menu-item" data-tab="west" data-container="blf-68f9fce6055e6">West<div class="counter-badge">
+                1</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- TABS CONTENT - Will be populated dynamically by JavaScript -->
+        <div class="tab-panels">
+          <!-- Dynamic tab panels will be inserted here -->
+          <div class="tab-content active" id="blf-68f9fce6055e6-all" data-tab="all" data-category="All">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce6055e6-north" data-tab="north" data-category="North">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce6055e6-south" data-tab="south" data-category="South">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce6055e6-west" data-tab="west" data-category="West">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="et_pb_module et_pb_text et_pb_text_4  et_pb_text_align_left et_pb_bg_layout_light">
+    <div class="et_pb_text_inner">
+      <h4>Short code: biz_location_finder search=”false” counters=”false”</h4>
+      <p>
+      </p>
+      <div class="x-stockists" id="blf-68f9fce605dd1" data-search-disabled="true" data-counters-disabled="true">
+        <!-- TABS NAVIGATION - Will be populated dynamically by JavaScript -->
+        <div class="tabs">
+          <ul class="tab-nav">
+            <!-- Dynamic tabs will be inserted here -->
+            <li class="tab-menu-item active" data-tab="all" data-container="blf-68f9fce605dd1">All</li>
+            <li class="tab-menu-item" data-tab="north" data-container="blf-68f9fce605dd1">North</li>
+            <li class="tab-menu-item" data-tab="south" data-container="blf-68f9fce605dd1">South</li>
+            <li class="tab-menu-item" data-tab="west" data-container="blf-68f9fce605dd1">West</li>
+          </ul>
+        </div>
+
+        <!-- TABS CONTENT - Will be populated dynamically by JavaScript -->
+        <div class="tab-panels">
+          <!-- Dynamic tab panels will be inserted here -->
+          <div class="tab-content active" id="blf-68f9fce605dd1-all" data-tab="all" data-category="All">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce605dd1-north" data-tab="north" data-category="North">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="strathalbyn" data-name="the vault">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">The Vault</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span
+                      class="biz-suburb">Strathalbyn</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=The%20Vault%2C%20Strathalbyn%2C%20South%20Australia"
+                    target="_blank" rel="noopener">39 Commercial Rd, Strathalbyn SA 5255</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/thevaultstrathalbyn" target="_blank"
+                    rel="noopener">@thevaultstrathalbyn</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce605dd1-south" data-tab="south" data-category="South">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="port noarlunga" data-name="agatha's cafe">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Agatha's Cafe</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Port
+                      Noarlunga</span></span></p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Agatha's%20Cafe%2C%20Port%20Noarlunga%2C%20South%20Australia"
+                    target="_blank" rel="noopener">1 Gawler St - Port Noarlunga SA 5167 SA</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/agathasatportnoarlunga" target="_blank"
+                    rel="noopener">@agathasatportnoarlunga</a></p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content" id="blf-68f9fce605dd1-west" data-tab="west" data-category="West">
+
+            <p class="no-results" hidden="">Sorry, no matches found.</p>
+            <div class="grid">
+              <article class="card visible" data-suburb="adelaide" data-name="abbots &amp; kinney city">
+                <div class="biz-name-container">
+                  <h4 class="biz-name">Abbots &amp; Kinney City</h4>
+                </div>
+                <p class="biz-meta"><span class="biz-suburb-container"><span class="biz-suburb">Adelaide</span></span>
+                </p>
+                <p class="biz-address"><a
+                    href="https://www.google.com/maps/search/?api=1&amp;query=Abbots%20%26%20Kinney%20City%2C%20Adelaide%2C%20South%20Australia"
+                    target="_blank" rel="noopener">78 Pirie St, Adelaide SA 5000</a></p>
+                <p class="biz-instagram"><a href="https://instagram.com/abbotsandkinney" target="_blank"
+                    rel="noopener">@abbotsandkinney</a></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+@use 'sass:color'
+@use 'colors' as *
+@use 'index' as *
+
+// Container
+.x-stockists
+  // padding: 24px
+  color: #222
+  // font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial
+
+// Grid layout
+.x-stockists
+  .grid
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 16px
+    transition: all $transition-speed ease
+
+// Responsive tweaks
+@media (max-width: 900px)
+  .x-stockists
+    .grid
+      grid-template-columns: repeat(2, 1fr)
+
+@media (max-width: 600px)
+  .x-stockists
+    .grid
+      grid-template-columns: 1fr

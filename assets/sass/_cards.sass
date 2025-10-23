@@ -1,0 +1,42 @@
+@use 'sass:color'
+@use 'colors' as *
+
+// Card styling
+.x-stockists
+  .card
+    background: $light-gray
+    padding: 12px
+    border-radius: 5px
+    border: 1px solid $border-color
+    opacity: 0
+    transform: translateY(10px)
+    transition: transform $transition-speed, opacity $transition-speed, box-shadow $transition-speed
+    display: flex
+    flex-flow: wrap column
+    justify-content: space-between
+    gap: 20px
+    min-height: 200px
+
+    > *
+      margin: 0
+      padding: 0
+      flex: 1 1 auto
+    
+    .biz-suburb
+      display: block
+      color: $k
+      background-color: color.adjust($butterscotch, $alpha: -0.85)
+      border-radius: 5px
+      padding: 2% 3%
+      // margin: 4% auto
+
+    &:hover
+      transform: translateY(-3px)
+      box-shadow: 0 2px 8px color.adjust($hunter-green, $alpha: -0.7)
+      background: color.adjust($yellow-green, $alpha: -0.9)
+
+    &.visible
+      opacity: 1
+      transform: translateY(0)
+
+      
