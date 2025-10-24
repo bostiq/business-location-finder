@@ -213,6 +213,19 @@ class BizLocationFinder {
             'callback' => array($this, 'get_stockists_csv'),
             'permission_callback' => '__return_true'
         ));
+        
+        /* New endpoint for database data */
+        register_rest_route('jq-stockists/v1', '/get-businesses', array(
+            'methods' => 'GET',
+            'callback' => array($this, 'get_businesses_api'),
+            'permission_callback' => '__return_true',
+            'args' => array(
+                'category' => array(
+                    'required' => false,
+                    'sanitize_callback' => 'sanitize_text_field'
+                )
+            )
+        ));
     }
     
     /**
@@ -264,14 +277,247 @@ class BizLocationFinder {
         ));
     }
     
+    /**
+     * REST API callback - serve data from database
+     */
+    public function get_businesses_api($request) {
+        /* Add security headers */
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: DENY');
+        
+        /* Get category filter if provided */
+        $category = $request->get_param('category');
+        
+        /* Get businesses from database */
+        $businesses = $this->get_businesses($category);
+        
+        if (empty($businesses)) {
+            return new WP_Error('no_data', 'No businesses found in database', array('status' => 404));
+        }
+        
+        /* Convert to CSV format for backward compatibility with frontend JavaScript */
+        $csv_output = $this->convert_businesses_to_csv($businesses);
+        
+        /* Return CSV data just like the Google Sheets endpoint */
+        return new WP_REST_Response($csv_output, 200, array(
+            'Content-Type' => 'text/plain; charset=utf-8',
+            'Cache-Control' => 'public, max-age=60' // Shorter cache for database data
+        ));
+    }
+    
+    /**
+     * Convert database businesses to CSV format
+     * This maintains compatibility with existing frontend JavaScript
+     */
+    private function convert_businesses_to_csv($businesses) {
+        if (empty($businesses)) {
+            return '';
+        }
+        
+        /* CSV header - matches existing Google Sheets format */
+        $csv_lines = array();
+        $csv_lines[] = 'name,category,suburb,address,instagram,website,phone,email,description';
+        
+        /* Convert each business to CSV row */
+        foreach ($businesses as $business) {
+            $row = array(
+                $this->escape_csv_field($business['name']),
+                $this->escape_csv_field($business['category']),
+                $this->escape_csv_field($business['suburb']),
+                $this->escape_csv_field($business['address']),
+                $this->escape_csv_field($business['instagram']),
+                $this->escape_csv_field($business['website']),
+                $this->escape_csv_field($business['phone']),
+                $this->escape_csv_field($business['email']),
+                $this->escape_csv_field($business['description'])
+            );
+            $csv_lines[] = implode(',', $row);
+        }
+        
+        return implode("\n", $csv_lines);
+    }
+    
+    /**
+     * Escape CSV field for proper formatting
+     */
+    private function escape_csv_field($field) {
+        if (empty($field)) {
+            return '';
+        }
+        
+        /* If field contains comma, quotes, or newlines, wrap in quotes and escape quotes */
+        if (strpos($field, ',') !== false || strpos($field, '"') !== false || strpos($field, "\n") !== false) {
+            return '"' . str_replace('"', '""', $field) . '"';
+        }
+        
+        return $field;
+    }
+    
     public function activate() {
         /* Create database tables on activation */
-        /* TODO: Implement database creation */
+        $this->create_database_tables();
         flush_rewrite_rules();
     }
     
+    /**
+     * Create database tables for storing business data
+     */
+    private function create_database_tables() {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'blf_businesses';
+        
+        $charset_collate = $wpdb->get_charset_collate();
+        
+        $sql = "CREATE TABLE $table_name (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            name varchar(255) NOT NULL,
+            category varchar(100) NOT NULL,
+            suburb varchar(100) DEFAULT '',
+            address text DEFAULT '',
+            instagram varchar(100) DEFAULT '',
+            website varchar(255) DEFAULT '',
+            phone varchar(50) DEFAULT '',
+            email varchar(255) DEFAULT '',
+            description text DEFAULT '',
+            is_active tinyint(1) DEFAULT 1,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            updated_at datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (id),
+            KEY category (category),
+            KEY suburb (suburb),
+            KEY is_active (is_active)
+        ) $charset_collate;";
+        
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+        
+        /* Store database version for future updates */
+        add_option('blf_db_version', '1.0');
+    }
+    
+    /**
+     * Get all businesses from database
+     */
+    public function get_businesses($category = null, $limit = null) {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'blf_businesses';
+        
+        $sql = "SELECT * FROM $table_name WHERE is_active = 1";
+        
+        if ($category && $category !== 'all') {
+            $sql .= $wpdb->prepare(" AND category = %s", $category);
+        }
+        
+        $sql .= " ORDER BY name ASC";
+        
+        if ($limit) {
+            $sql .= $wpdb->prepare(" LIMIT %d", $limit);
+        }
+        
+        return $wpdb->get_results($sql, ARRAY_A);
+    }
+    
+    /**
+     * Insert a new business
+     */
+    public function insert_business($data) {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'blf_businesses';
+        
+        /* Sanitize data */
+        $sanitized_data = array(
+            'name' => sanitize_text_field($data['name']),
+            'category' => sanitize_text_field($data['category']),
+            'suburb' => sanitize_text_field($data['suburb'] ?? ''),
+            'address' => sanitize_textarea_field($data['address'] ?? ''),
+            'instagram' => sanitize_text_field($data['instagram'] ?? ''),
+            'website' => esc_url_raw($data['website'] ?? ''),
+            'phone' => sanitize_text_field($data['phone'] ?? ''),
+            'email' => sanitize_email($data['email'] ?? ''),
+            'description' => sanitize_textarea_field($data['description'] ?? ''),
+            'is_active' => 1
+        );
+        
+        $result = $wpdb->insert($table_name, $sanitized_data);
+        
+        if ($result === false) {
+            return new WP_Error('db_insert_error', 'Failed to insert business: ' . $wpdb->last_error);
+        }
+        
+        return $wpdb->insert_id;
+    }
+    
+    /**
+     * Update an existing business
+     */
+    public function update_business($id, $data) {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'blf_businesses';
+        
+        /* Sanitize data */
+        $sanitized_data = array(
+            'name' => sanitize_text_field($data['name']),
+            'category' => sanitize_text_field($data['category']),
+            'suburb' => sanitize_text_field($data['suburb'] ?? ''),
+            'address' => sanitize_textarea_field($data['address'] ?? ''),
+            'instagram' => sanitize_text_field($data['instagram'] ?? ''),
+            'website' => esc_url_raw($data['website'] ?? ''),
+            'phone' => sanitize_text_field($data['phone'] ?? ''),
+            'email' => sanitize_email($data['email'] ?? ''),
+            'description' => sanitize_textarea_field($data['description'] ?? ''),
+            'updated_at' => current_time('mysql')
+        );
+        
+        $result = $wpdb->update(
+            $table_name,
+            $sanitized_data,
+            array('id' => intval($id)),
+            array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'),
+            array('%d')
+        );
+        
+        if ($result === false) {
+            return new WP_Error('db_update_error', 'Failed to update business: ' . $wpdb->last_error);
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Delete a business (soft delete - set inactive)
+     */
+    public function delete_business($id) {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'blf_businesses';
+        
+        $result = $wpdb->update(
+            $table_name,
+            array('is_active' => 0, 'updated_at' => current_time('mysql')),
+            array('id' => intval($id)),
+            array('%d', '%s'),
+            array('%d')
+        );
+        
+        if ($result === false) {
+            return new WP_Error('db_delete_error', 'Failed to delete business: ' . $wpdb->last_error);
+        }
+        
+        return $result;
+    }
+    
     public function deactivate() {
+        /* Clean up on deactivation - but keep data */
         flush_rewrite_rules();
+        
+        /* Note: We don't drop the database table on deactivation
+         * Users might want to reactivate the plugin later
+         * Table will only be dropped on uninstall (if we add that hook)
+         */
     }
 }
 
