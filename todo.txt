@@ -25,6 +25,244 @@ Creating database tables for local storage (Task 4)
 Adding CSV import functionality (Task 5)
 Category management interface for advanced users
 
+🎯 NEW INITIATIVE: Dynamic Field Mapping System
+- CSV Upload with Field Mapping Interface
+- User defines what each CSV column represents (Name, Address, Phone, etc.)
+- Smart formatting based on field type:
+  * Address → Google Maps links
+  * Phone → Clickable tel: links  
+  * Instagram → @handle with Instagram links
+  * Website → External links with target="_blank"
+  * Plain Text → Just display as-is
+- Dynamic card rendering based on field configuration
+- Flexible positioning and display order
+- Completely eliminates hardcoded field limitations
+
+📝 CODE EXAMPLES FOR IMPLEMENTATION:
+
+// Field type definitions (PHP)
+$field_types = array(
+    'name' => array(
+        'label' => 'Business Name',
+        'formatting' => 'plain_text',
+        'css_class' => 'biz-name',
+        'required' => true,
+        'position' => 'header'
+    ),
+    'address' => array(
+        'label' => 'Address',
+        'formatting' => 'google_maps_link',
+        'css_class' => 'biz-address',
+        'required' => false,
+        'position' => 'body'
+    ),
+    'phone' => array(
+        'label' => 'Phone',
+        'formatting' => 'tel_link',
+        'css_class' => 'biz-phone',
+        'required' => false,
+        'position' => 'body'
+    ),
+    'instagram' => array(
+        'label' => 'Instagram',
+        'formatting' => 'instagram_link',
+        'css_class' => 'biz-instagram',
+        'required' => false,
+        'position' => 'body'
+    ),
+    'website' => array(
+        'label' => 'Website',
+        'formatting' => 'external_link',
+        'css_class' => 'biz-website',
+        'required' => false,
+        'position' => 'body'
+    ),
+    'plain_text' => array(
+        'label' => 'Plain Text',
+        'formatting' => 'plain_text',
+        'css_class' => 'biz-text',
+        'required' => false,
+        'position' => 'body'
+    )
+);
+
+// JavaScript formatting functions
+const formatters = {
+    plain_text: (value) => value,
+    
+    google_maps_link: (value, businessName, suburb) => {
+        const query = `${businessName}, ${value}, ${suburb}`;
+        return `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank">${value}</a>`;
+    },
+    
+    tel_link: (value) => {
+        const cleanPhone = value.replace(/[^\d+]/g, '');
+        return `<a href="tel:${cleanPhone}">${value}</a>`;
+    },
+    
+    instagram_link: (value) => {
+        const handle = value.replace(/^@/, '');
+        return `<a href="https://instagram.com/${handle}" target="_blank">@${handle}</a>`;
+    },
+    
+    external_link: (value) => {
+        const url = value.startsWith('http') ? value : `https://${value}`;
+        return `<a href="${url}" target="_blank" rel="noopener">${value}</a>`;
+    }
+};
+
+// Dynamic card rendering function
+function renderBusinessCard(business, fieldMappings) {
+    const card = document.createElement('article');
+    card.className = 'card';
+    
+    // Sort fields by display order
+    const sortedFields = fieldMappings.sort((a, b) => a.display_order - b.display_order);
+    
+    sortedFields.forEach(field => {
+        const value = business[field.csv_column];
+        if (!value) return;
+        
+        const element = document.createElement('div');
+        element.className = field.css_class;
+        
+        // Apply appropriate formatting
+        const formattedValue = formatters[field.field_type](value, business.name, business.suburb);
+        element.innerHTML = formattedValue;
+        
+        card.appendChild(element);
+    });
+    
+    return card;
+}
+
+// Database schema for field mappings
+CREATE TABLE wp_blf_field_mappings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    csv_column VARCHAR(100),
+    field_type VARCHAR(50),
+    display_label VARCHAR(100),
+    display_order INT,
+    is_searchable BOOLEAN DEFAULT FALSE,
+    formatting_options JSON,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+📋 USER MAPPING INTERFACE FLOW:
+
+Step 1: File Upload
+<form enctype="multipart/form-data" method="post">
+    <input type="file" name="csv_file" accept=".csv" />
+    <button type="submit">Upload & Preview CSV</button>
+</form>
+
+Step 2: CSV Preview & Column Detection
+// PHP backend processes the upload
+$csv_data = file_get_contents($_FILES['csv_file']['tmp_name']);
+$lines = explode("\n", $csv_data);
+$headers = str_getcsv($lines[0]); // Get column headers
+$preview_rows = array_slice($lines, 1, 3); // First 3 data rows for preview
+
+Step 3: Field Mapping Interface
+<div class="field-mapping-interface">
+    <h3>Map Your CSV Columns to Field Types</h3>
+    
+    <table class="mapping-table">
+        <thead>
+            <tr>
+                <th>CSV Column</th>
+                <th>Sample Data</th>
+                <th>Field Type</th>
+                <th>Display Label</th>
+                <th>Display Order</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>business_name</strong></td>
+                <td><em>Joe's Coffee Shop</em></td>
+                <td>
+                    <select name="field_type[business_name]">
+                        <option value="name" selected>Business Name</option>
+                        <option value="address">Address</option>
+                        <option value="phone">Phone Number</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="website">Website</option>
+                        <option value="plain_text">Plain Text</option>
+                        <option value="skip">Skip This Column</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="display_label[business_name]" value="Business Name" />
+                </td>
+                <td>
+                    <input type="number" name="display_order[business_name]" value="1" min="1" />
+                </td>
+            </tr>
+            
+            <tr>
+                <td><strong>location_address</strong></td>
+                <td><em>123 Main St, Adelaide SA</em></td>
+                <td>
+                    <select name="field_type[location_address]">
+                        <option value="name">Business Name</option>
+                        <option value="address" selected>Address</option>
+                        <option value="phone">Phone Number</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="website">Website</option>
+                        <option value="plain_text">Plain Text</option>
+                        <option value="skip">Skip This Column</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="display_label[location_address]" value="Address" />
+                </td>
+                <td>
+                    <input type="number" name="display_order[location_address]" value="3" min="1" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <button type="submit" name="save_mapping">Save Field Mapping & Import Data</button>
+</div>
+
+Step 4: Smart Auto-Detection
+function auto_detect_field_type($column_name, $sample_data) {
+    $column_lower = strtolower($column_name);
+    
+    // Smart detection based on column names
+    if (strpos($column_lower, 'name') !== false) return 'name';
+    if (strpos($column_lower, 'address') !== false || strpos($column_lower, 'location') !== false) return 'address';
+    if (strpos($column_lower, 'phone') !== false || strpos($column_lower, 'mobile') !== false) return 'phone';
+    if (strpos($column_lower, 'instagram') !== false || strpos($column_lower, 'insta') !== false) return 'instagram';
+    if (strpos($column_lower, 'website') !== false || strpos($column_lower, 'url') !== false) return 'website';
+    
+    // Pattern detection in sample data
+    if (preg_match('/^@\w+/', $sample_data)) return 'instagram';
+    if (preg_match('/^\+?[\d\s\-\(\)]+$/', $sample_data)) return 'phone';
+    if (filter_var($sample_data, FILTER_VALIDATE_URL)) return 'website';
+    
+    return 'plain_text'; // Default fallback
+}
+
+Step 5: Preview Before Final Import
+<div class="preview-section">
+    <h3>Preview: How Your Business Cards Will Look</h3>
+    <div class="card-preview">
+        <!-- Generated preview card based on mapping -->
+    </div>
+    <button type="submit" name="confirm_import">Looks Good - Import All Data</button>
+    <button type="button" onclick="goBackToMapping()">Go Back & Adjust Mapping</button>
+</div>
+
+COMPLETE FLOW:
+1. Upload CSV → System detects columns automatically
+2. Map Fields → User assigns field types to each column  
+3. Preview Cards → User sees exactly how it will look
+4. Confirm Import → Data is processed and stored
+5. Frontend Updates → Cards render with new dynamic structure
+
 🚀 Current Status:
 Your plugin is now UNIVERSALLY FLEXIBLE! It works with any Google Sheet structure and any category names. Someone can use this with:
 - Coffee shops (Destinational, Inner City, Suburban)
