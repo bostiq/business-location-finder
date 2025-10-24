@@ -522,4 +522,4 @@ class BizLocationFinder {
 }
 
 /* Initialize the plugin */
-new BizLocationFinder();
+$blf_plugin = new BizLocationFinder();
