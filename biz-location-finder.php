@@ -126,6 +126,13 @@ class BizLocationFinder {
             'default' => 'https://docs.google.com/spreadsheets/d/1A8W-_GwPfCWbkqzyvSRKNC2x6bTzDCwBNS24tNuKCt8/export?format=csv&gid=1952886414'
         ));
         
+        /* Register data source setting */
+        register_setting('blf_settings', 'blf_data_source', array(
+            'type' => 'string',
+            'sanitize_callback' => 'sanitize_text_field',
+            'default' => 'google_sheets'
+        ));
+        
         /* Add settings section */
         add_settings_section(
             'blf_main_settings',
@@ -225,6 +232,26 @@ class BizLocationFinder {
                     'sanitize_callback' => 'sanitize_text_field'
                 )
             )
+        ));
+        
+        /* Unified endpoint that switches data source based on admin settings */
+        register_rest_route('jq-stockists/v1', '/get-data', array(
+            'methods' => 'GET',
+            'callback' => array($this, 'get_data_by_source'),
+            'permission_callback' => '__return_true',
+            'args' => array(
+                'category' => array(
+                    'required' => false,
+                    'sanitize_callback' => 'sanitize_text_field'
+                )
+            )
+        ));
+        
+        /* Debug endpoint to check database configuration */
+        register_rest_route('jq-stockists/v1', '/debug-db', array(
+            'methods' => 'GET',
+            'callback' => array($this, 'debug_database_info'),
+            'permission_callback' => '__return_true'
         ));
     }
     
@@ -351,6 +378,65 @@ class BizLocationFinder {
         }
         
         return $field;
+    }
+    
+    /**
+     * Unified data endpoint that switches between Google Sheets and database
+     * based on admin settings
+     */
+    public function get_data_by_source($request) {
+        // Check which data source is selected in admin
+        $data_source = get_option('blf_data_source', 'google_sheets');
+        
+        if ($data_source === 'database') {
+            // Return JSON from database
+            $category = $request->get_param('category');
+            $businesses = $this->get_businesses($category);
+            
+            if (empty($businesses)) {
+                return new WP_Error('no_data', 'No businesses found in database', array('status' => 404));
+            }
+            
+            // Return as JSON for modern frontend handling
+            return new WP_REST_Response(array(
+                'success' => true,
+                'data' => $businesses,
+                'source' => 'database'
+            ), 200, array(
+                'Content-Type' => 'application/json; charset=utf-8',
+                'Cache-Control' => 'public, max-age=60'
+            ));
+        } else {
+            // Return CSV from Google Sheets (delegate to existing method)
+            return $this->get_stockists_csv($request);
+        }
+    }
+    
+    /**
+     * Debug endpoint to check database configuration
+     */
+    public function debug_database_info($request) {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'blf_businesses';
+        
+        // Check if table exists
+        $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name;
+        
+        // Get row count if table exists
+        $row_count = 0;
+        if ($table_exists) {
+            $row_count = $wpdb->get_var("SELECT COUNT(*) FROM $table_name");
+        }
+        
+        return new WP_REST_Response(array(
+            'database_name' => DB_NAME,
+            'table_prefix' => $wpdb->prefix,
+            'full_table_name' => $table_name,
+            'table_exists' => $table_exists,
+            'row_count' => (int)$row_count,
+            'data_source_setting' => get_option('blf_data_source', 'google_sheets')
+        ), 200);
     }
     
     public function activate() {

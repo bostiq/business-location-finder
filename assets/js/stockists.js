@@ -565,30 +565,59 @@
   }
 
   function fetchBusinessesAndInit() {
-    // WordPress REST API endpoint for the plugin
-    const csvUrl = '/wp-json/jq-stockists/v1/get-csv';
+    // Use the new unified data endpoint that respects admin settings
+    const wpRoot = window.location.origin + window.location.pathname.split('/wp-dev')[0] + '/wp-dev';
+    const dataUrl = `${wpRoot}/wp-json/jq-stockists/v1/get-data`;
 
-    fetch(csvUrl)
+    console.log('Fetching data from unified endpoint:', dataUrl);
+    
+    fetch(dataUrl)
       .then(res => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
-        return res.text();
+        
+        // Check if response is JSON (database) or text (CSV)
+        const contentType = res.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return res.json().then(data => ({ type: 'json', data }));
+        } else {
+          return res.text().then(data => ({ type: 'csv', data }));
+        }
       })
-      .then(csvText => {
-        console.log('CSV loaded, first 200 chars:', csvText.substring(0, 200));
-        businesses = parseCSV(csvText);
-        if (businesses.length === 0) {
-          throw new Error('No businesses parsed from CSV');
+      .then(response => {
+        console.log('Data response type:', response.type);
+        console.log('Data response:', response.data);
+        
+        if (response.type === 'json') {
+          // Database data - extract from response structure
+          if (response.data && response.data.success && response.data.data) {
+            businesses = response.data.data;
+            console.log(`Successfully loaded ${businesses.length} businesses from database`);
+          } else if (response.data && Array.isArray(response.data)) {
+            // Direct array format
+            businesses = response.data;
+            console.log(`Successfully loaded ${businesses.length} businesses from database`);
+          } else {
+            // Empty or invalid database response
+            businesses = [];
+            console.log('Database returned empty or invalid data');
+          }
+        } else {
+          // CSV data - needs parsing
+          businesses = parseCSV(response.data);
+          console.log(`Successfully loaded ${businesses.length} businesses from CSV`);
         }
         
-        console.log(`Successfully loaded ${businesses.length} businesses`);
-        console.log('Sample business categories:', businesses.slice(0, 5).map(b => b.category));
+        if (businesses.length === 0) {
+          throw new Error('No businesses found in selected data source');
+        }
         
+        console.log('Sample business categories:', businesses.slice(0, 5).map(b => b.category));
         init();
       })
       .catch(err => {
-        console.error('Failed to load businesses.csv', err);
+        console.error('Failed to load business data:', err);
         
         // Show user-friendly error message
         const container = document.querySelector('.x-stockists');

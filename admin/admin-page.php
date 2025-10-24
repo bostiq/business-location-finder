@@ -49,6 +49,60 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
 <div class="wrap">
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
     
+    <!-- Data Source Selection -->
+    <div class="card" style="background: #f9f9f9; border-left: 4px solid #0073aa;">
+        <h2>⚙️ Data Source Configuration</h2>
+        <form method="post" action="options.php">
+            <?php settings_fields('blf_settings'); ?>
+            <table class="form-table">
+                <tr>
+                    <th scope="row">Choose Your Data Source</th>
+                    <td>
+                        <?php 
+                        $data_source = get_option('blf_data_source', 'google_sheets');
+                        ?>
+                        <fieldset>
+                            <label style="display: block; margin-bottom: 10px; padding: 10px; background: <?php echo ($data_source === 'google_sheets') ? '#e7f3ff' : '#fff'; ?>; border-radius: 5px; border: 2px solid <?php echo ($data_source === 'google_sheets') ? '#0073aa' : '#ddd'; ?>;">
+                                <input type="radio" name="blf_data_source" value="google_sheets" <?php checked($data_source, 'google_sheets'); ?> style="margin-right: 8px;" />
+                                <strong>📊 Google Sheets</strong> - Use external Google Sheets data
+                                <br><small style="margin-left: 24px; color: #666;">Perfect for collaborating with team members or using existing spreadsheets</small>
+                            </label>
+                            <label style="display: block; padding: 10px; background: <?php echo ($data_source === 'database') ? '#e7f3ff' : '#fff'; ?>; border-radius: 5px; border: 2px solid <?php echo ($data_source === 'database') ? '#0073aa' : '#ddd'; ?>;">
+                                <input type="radio" name="blf_data_source" value="database" <?php checked($data_source, 'database'); ?> style="margin-right: 8px;" />
+                                <strong>🗃️ Database Records</strong> - Use locally managed business data
+                                <br><small style="margin-left: 24px; color: #666;">Add and manage businesses directly through this admin interface</small>
+                            </label>
+                        </fieldset>
+                        
+                        <?php if ($data_source === 'google_sheets'): ?>
+                        <div style="margin-top: 15px; padding: 10px; background: #fff2e7; border-radius: 5px;">
+                            <label for="blf_google_sheets_url"><strong>Google Sheets URL:</strong></label><br>
+                            <input type="url" id="blf_google_sheets_url" name="blf_google_sheets_url" 
+                                   value="<?php echo esc_attr(get_option('blf_google_sheets_url', '')); ?>" 
+                                   class="regular-text" style="width: 100%; margin-top: 5px;" />
+                            <p class="description">Enter your published Google Sheets CSV URL</p>
+                        </div>
+                        <?php endif; ?>
+                        
+                        <?php submit_button('Save Data Source Settings', 'primary', 'submit', false); ?>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <script>
+    // Show/hide Google Sheets URL field based on selection
+    document.querySelectorAll('input[name="blf_data_source"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const urlField = document.querySelector('div[style*="background: #fff2e7"]');
+            if (urlField) {
+                urlField.style.display = this.value === 'google_sheets' ? 'block' : 'none';
+            }
+        });
+    });
+    </script>
+    
     <!-- Status Overview -->
     <div class="card">
         <h2>📊 Data Source Status</h2>
@@ -77,6 +131,10 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
         </div>
     </div>
 
+    <?php 
+    $data_source = get_option('blf_data_source', 'google_sheets');
+    if ($data_source === 'database'): 
+    ?>
     <!-- Add New Business Form -->
     <div class="card">
         <h2>➕ Add New Business</h2>
@@ -129,9 +187,23 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
             <?php submit_button('Add Business', 'primary', 'add_business'); ?>
         </form>
     </div>
+    <?php else: ?>
+    <!-- Google Sheets Mode Message -->
+    <div class="card" style="background: #fff2e7; border-left: 4px solid #ff8c00;">
+        <h2>📊 Google Sheets Mode</h2>
+        <p><strong>Data source is set to Google Sheets.</strong> Your business data comes from the external spreadsheet configured above.</p>
+        <p>To add or edit businesses:</p>
+        <ul style="margin-left: 20px;">
+            <li>📝 <strong>Edit your Google Sheet</strong> directly in Google Sheets</li>
+            <li>🔄 <strong>Changes appear automatically</strong> on your website</li>
+            <li>🗃️ <strong>Or switch to "Database Records"</strong> above to manage data locally</li>
+        </ul>
+        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary">🔗 Open Google Sheet</a></p>
+    </div>
+    <?php endif; // End of database-only form ?>
 
     <!-- Database Businesses List -->
-    <?php if ($business_count > 0): ?>
+    <?php if ($data_source === 'database' && $business_count > 0): ?>
     <div class="card">
         <h2>🗃️ Database Businesses (<?php echo esc_html($business_count); ?>)</h2>
         <div class="tablenav top">
