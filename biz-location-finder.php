@@ -6,7 +6,7 @@
  * Description: A dynamic, interactive business location finder
  * with tabbed interface, search functionality, and shortcode support.
  * 
- * Version: 2.0.3
+ * Version: 2.1.3
  * Author: Lorenzo Colen
  * Author URI: https://indexwebmedia.com/
  * License: GPL v2 or later
@@ -24,7 +24,7 @@
  * @author    Lorenzo Colen <info@indexwebmedia.com>
  * @copyright 2025 Index Web Media
  * @license   GPL-2.0-or-later <https://www.gnu.org/licenses/gpl-2.0.html>
- * @CVN       2.0.3
+ * @CVN       2.1.3
  * @link      https://indexwebmedia.com/
  * @tag       WordPress, plugin, business directory, location finder, shortcode
  * @since     1.0.0
@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
 /* Define plugin constants */
 define('BLF_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('BLF_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('BLF_VERSION', '2.0.3');
+define('BLF_VERSION', '2.1.3');
 
 /**
  * Main Plugin Class
@@ -113,6 +113,12 @@ class BizLocationFinder {
     public function admin_enqueue_scripts($hook) {
         /* Only load on our admin pages */
         if (strpos($hook, 'biz-location-finder') !== false) {
+            wp_enqueue_style(
+                'biz-location-finder-admin-css',
+                BLF_PLUGIN_URL . 'assets/css/admin-styles.min.css',
+                array('wp-admin'),
+                BLF_VERSION
+            );
             wp_enqueue_style('wp-admin');
             wp_enqueue_script('jquery');
         }
@@ -393,15 +399,12 @@ class BizLocationFinder {
             $category = $request->get_param('category');
             $businesses = $this->get_businesses($category);
             
-            if (empty($businesses)) {
-                return new WP_Error('no_data', 'No businesses found in database', array('status' => 404));
-            }
-            
-            // Return as JSON for modern frontend handling
+            // Always return success, even with empty data
             return new WP_REST_Response(array(
                 'success' => true,
                 'data' => $businesses,
-                'source' => 'database'
+                'source' => 'database',
+                'count' => count($businesses)
             ), 200, array(
                 'Content-Type' => 'application/json; charset=utf-8',
                 'Cache-Control' => 'public, max-age=60'
@@ -604,6 +607,158 @@ class BizLocationFinder {
          * Users might want to reactivate the plugin later
          * Table will only be dropped on uninstall (if we add that hook)
          */
+    }
+}
+
+/* AJAX Handlers for Admin Functions */
+
+// Add new business
+add_action('wp_ajax_blf_add_business', 'blf_ajax_add_business');
+function blf_ajax_add_business() {
+    // Check nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'blf_admin_nonce')) {
+        wp_die('Security check failed');
+    }
+    
+    // Check permissions
+    if (!current_user_can('manage_options')) {
+        wp_die('Insufficient permissions');
+    }
+    
+    $business_data = array(
+        'name' => sanitize_text_field($_POST['business_name']),
+        'category' => sanitize_text_field($_POST['business_category']),
+        'suburb' => sanitize_text_field($_POST['business_suburb']),
+        'address' => sanitize_textarea_field($_POST['business_address']),
+        'instagram' => sanitize_text_field($_POST['business_instagram']),
+        'website' => esc_url_raw($_POST['business_website']),
+        'phone' => sanitize_text_field($_POST['business_phone']),
+        'email' => sanitize_email($_POST['business_email']),
+        'description' => sanitize_textarea_field($_POST['business_description'])
+    );
+    
+    global $blf_plugin;
+    $result = $blf_plugin->insert_business($business_data);
+    
+    if (is_wp_error($result)) {
+        wp_send_json_error($result->get_error_message());
+    } else {
+        wp_send_json_success('Business added successfully');
+    }
+}
+
+// Get single business for editing
+add_action('wp_ajax_blf_get_business', 'blf_ajax_get_business');
+function blf_ajax_get_business() {
+    // Check nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'blf_admin_nonce')) {
+        wp_die('Security check failed');
+    }
+    
+    // Check permissions
+    if (!current_user_can('manage_options')) {
+        wp_die('Insufficient permissions');
+    }
+    
+    $business_id = intval($_POST['business_id']);
+    
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'blf_businesses';
+    
+    $business = $wpdb->get_row($wpdb->prepare(
+        "SELECT * FROM $table_name WHERE id = %d",
+        $business_id
+    ), ARRAY_A);
+    
+    if ($business) {
+        wp_send_json_success($business);
+    } else {
+        wp_send_json_error('Business not found');
+    }
+}
+
+// Update business
+add_action('wp_ajax_blf_update_business', 'blf_ajax_update_business');
+function blf_ajax_update_business() {
+    // Check nonce (support both nonce names for different forms)
+    $nonce_valid = false;
+    if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'blf_admin_nonce')) {
+        $nonce_valid = true;
+    } else if (isset($_POST['edit_nonce']) && wp_verify_nonce($_POST['edit_nonce'], 'blf_edit_business_nonce')) {
+        $nonce_valid = true;
+    }
+    
+    if (!$nonce_valid) {
+        wp_send_json_error('Security check failed');
+        return;
+    }
+    
+    // Check permissions
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('Insufficient permissions');
+        return;
+    }
+    
+    $business_id = intval($_POST['business_id']);
+    $business_data = array(
+        'name' => sanitize_text_field($_POST['business_name']),
+        'category' => sanitize_text_field($_POST['business_category']),
+        'suburb' => sanitize_text_field($_POST['business_suburb']),
+        'address' => sanitize_textarea_field($_POST['business_address']),
+        'phone' => sanitize_text_field($_POST['business_phone']),
+        'email' => sanitize_email($_POST['business_email']),
+        'website' => esc_url_raw($_POST['business_website']),
+        'instagram' => sanitize_text_field($_POST['business_instagram']),
+        'description' => sanitize_textarea_field($_POST['business_description']),
+        'updated_at' => current_time('mysql')
+    );
+    
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'blf_businesses';
+    
+    $result = $wpdb->update(
+        $table_name,
+        $business_data,
+        array('id' => $business_id),
+        array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'),
+        array('%d')
+    );
+    
+    if ($result !== false) {
+        wp_send_json_success('Business updated successfully');
+    } else {
+        wp_send_json_error('Failed to update business');
+    }
+}
+
+// Delete business
+add_action('wp_ajax_blf_delete_business', 'blf_ajax_delete_business');
+function blf_ajax_delete_business() {
+    // Check nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'blf_admin_nonce')) {
+        wp_die('Security check failed');
+    }
+    
+    // Check permissions
+    if (!current_user_can('manage_options')) {
+        wp_die('Insufficient permissions');
+    }
+    
+    $business_id = intval($_POST['business_id']);
+    
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'blf_businesses';
+    
+    $result = $wpdb->delete(
+        $table_name,
+        array('id' => $business_id),
+        array('%d')
+    );
+    
+    if ($result) {
+        wp_send_json_success('Business deleted successfully');
+    } else {
+        wp_send_json_error('Failed to delete business');
     }
 }
 

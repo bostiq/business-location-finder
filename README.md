@@ -7,7 +7,8 @@ A dynamic, interactive business location finder with flexible category support, 
 ### ✨ **Universal Flexibility**
 - **Any Category Names**: Works with restaurants, services, retail, or any business type
 - **Dynamic Tab Generation**: Automatically creates tabs based on your data categories
-- **Google Sheets Integration**: Easy content management through familiar spreadsheet interface
+- **Dual Data Sources**: Choose between Google Sheets or local database storage
+- **Database Management**: Full CRUD operations via WordPress admin interface
 - **Responsive Design**: Mobile-friendly grid layout that adapts to any screen size
 
 ### 🎯 **Core Functionality**
@@ -17,8 +18,9 @@ A dynamic, interactive business location finder with flexible category support, 
 - **Interactive Cards**: Hover effects with Google Maps integration
 - **Social Media Links**: Direct Instagram profile connections
 - **Smooth Animations**: Staggered card reveal animations
+- **Admin Interface**: Add, edit, and delete businesses with modal forms
 
-### �️ **Enterprise Security**
+### 🔒 **Enterprise Security**
 - Input sanitization and XSS protection
 - CSRF protection with WordPress nonces
 - Capability-based access control
@@ -160,12 +162,13 @@ The system adapts to ANY category structure:
 
 ### **System Information**
 
-**Current Version**: v2.0.3 (October 2025)
+**Current Version**: v2.1.3 (October 2025)
 
 **Component Versions:**
-- Frontend: stockists.js v2.0.3
-- Backend: biz-location-finder.php v2.0.3
-- Styles: SASS/CSS v1.2.4
+- Frontend: stockists.js v2.1.3
+- Backend: biz-location-finder.php v2.1.3
+- Admin Interface: v2.1.3 (Database CRUD)
+- Styles: SASS/CSS v2.1.3 (Optimized)
 
 ### **Architecture**
 
@@ -237,9 +240,55 @@ business-location-finder/
 | Edge | ✅ Latest |
 | Mobile | ✅ iOS Safari, Chrome Mobile |
 
-### **Version History**
+## Version History
 
-#### **v2.0.3** (October 2025) - **Current Release**
+### v2.1.3 (Current)
+**Critical Bug Fix - Edit Business Modal**
+- **Bug Fix**: Fixed modal display issue in WordPress admin interface for editing business records
+- **CSS Fix**: Added global modal styles with !important declarations to override WordPress admin CSS
+- **JavaScript Fix**: Corrected table cell mapping in loadBusinessData function to match 6-column table structure
+- **Modal Enhancement**: Improved modal backdrop, positioning, and form sections for better user experience
+- **Debugging**: Added comprehensive console logging for troubleshooting modal and edit functionality
+- **Production Deployment**: Created production-005 build with complete modal functionality
+
+### v2.1.2 (Previous)
+**SASS Architecture Optimization & Production Deployment**
+- **Major**: Complete SASS architecture restructure for maintainable development
+- **Build System**: Optimized CSS output with two-file structure (`style.min.css` + `admin-styles.min.css`)
+- **Modularity**: Separated structure from color schemes with logical file organization
+- **Performance**: Eliminated inline admin styles, moved to organized SASS partials
+- **Maintainability**: Created centralized color system with reusable mixins and functions
+- **File Structure**: 
+  - `admin-styles.sass` - Root admin stylesheet with proper imports
+  - `_admin-styles-color-scheme.sass` - Admin settings page colors + shared components
+  - `_import-page.sass` - Import page structure-only styling
+  - `_import-page-color-scheme.sass` - Import page specific color scheme
+  - `_colors.sass` - Centralized color system for entire plugin
+- **Developer Experience**: Clear separation of concerns, easy color customization, efficient CSS compilation
+- **Production Ready**: Minified CSS files optimized for deployment with source maps
+
+### v2.1.1 (Previous)
+**Empty Database Handling & Version Consistency**
+- **Fix**: Corrected version numbers across all files to maintain consistency
+- **Enhancement**: Improved empty database handling with user-friendly messaging
+- **Enhancement**: Backend now returns success (200) instead of 404 for empty database
+- **Enhancement**: Frontend shows "No businesses found" message instead of HTTP error
+- **UI**: Added styled `.blf-no-businesses` component for better empty state display
+- **UX**: Provides clear guidance to users on how to add businesses when database is empty
+
+### v2.1.0 (Previous)
+**Database Implementation & Admin Interface**
+- **Major**: Added complete MySQL database support with dual data source architecture
+- **Feature**: Implemented CRUD operations for business records (Create, Read, Update, Delete)
+- **Feature**: Built comprehensive admin interface with modal edit forms
+- **Feature**: Added AJAX handlers for secure database operations with nonce verification
+- **Enhancement**: Unified data source switching between Google Sheets and database
+- **Enhancement**: Added description column display in admin business listings
+- **Enhancement**: Improved security with capability checks for admin operations
+- **Build System**: Created automated production build scripts with version extraction
+- **Documentation**: Separated user (README.md) and developer (BUILD.md) documentation
+
+#### **v2.0.3** (October 2025) - **Previous Release**
 - ✨ **New View Mode**: Added `view="data"` parameter for tab-free display mode
 - 🎯 **Flexible Layout**: Choose between full tabbed interface or clean data-only view
 - 🔧 **Multi-Container Support**: Perfect support for multiple shortcodes on same page with unique IDs
@@ -337,16 +386,33 @@ GET /wp-json/jq-stockists/v1/get-csv
 
 ---
 
-## 📞 **Support & Maintenance**
+## 🛠️ **For Developers**
+
+### **Database Integration** ✅
+The plugin now supports **dual data sources**:
+- **Google Sheets**: External CSV data via spreadsheet export
+- **Database Storage**: Local WordPress database with full CRUD operations
+
+### **Admin Interface**
+- **Data Source Toggle**: Switch between Google Sheets and Database
+- **Business Management**: Add, edit, and delete businesses via admin interface
+- **Modal Forms**: User-friendly editing experience
+- **Responsive Layout**: Optimized admin interface with side-by-side sections
+
+---
+
+## �📞 **Support & Maintenance**
 
 ### **Current Status**
 ✅ **Production Ready**: Fully functional and tested  
+✅ **Database Integration**: Local storage with Google Sheets fallback  
 ✅ **Flexible Categories**: Works with any business type  
 ✅ **Security Hardened**: Enterprise-level protection  
 ✅ **Mobile Optimized**: Responsive across all devices  
+✅ **CRUD Operations**: Full admin management interface
 
 ### **Roadmap**
-🚧 **Local Database Storage**: Reduce Google Sheets dependency  
+🚧 **Multi-Category Support**: Businesses in multiple categories  
 🚧 **CSV Import Interface**: Upload files directly via admin  
 🚧 **Advanced Filtering**: Multiple search criteria  
 🚧 **Custom Fields**: Additional business metadata  

@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.0.3 - Data view mode feature added
-    console.log('Running Biz Location Finder v2.0.3');
+    // Biz Location Finder v2.1.3 - Modal edit functionality bug fix
+    console.log('Running Biz Location Finder v2.1.3');
   
   // -----------------------
   // Data
@@ -394,12 +394,51 @@
         igLink.rel = 'noopener';
         igLink.textContent = `@${igHandle}`;
 
+        // Create website link if available
+        const websiteLink = document.createElement('a');
+        if (b.website && b.website.trim()) {
+          websiteLink.href = b.website.startsWith('http') ? b.website : `https://${b.website}`;
+          websiteLink.target = '_blank';
+          websiteLink.rel = 'noopener';
+          websiteLink.textContent = 'Visit Website';
+          websiteLink.className = 'biz-website';
+        }
+
+        // Create phone link if available
+        const phoneLink = document.createElement('a');
+        if (b.phone && b.phone.trim()) {
+          phoneLink.href = `tel:${b.phone.replace(/\s/g, '')}`;
+          phoneLink.textContent = b.phone;
+          phoneLink.className = 'biz-phone';
+        }
+
+        // Create email link if available
+        const emailLink = document.createElement('a');
+        if (b.email && b.email.trim()) {
+          emailLink.href = `mailto:${b.email}`;
+          emailLink.textContent = b.email;
+          emailLink.className = 'biz-email';
+        }
+
+        // Create description element if available
+        const descriptionElement = document.createElement('p');
+        if (b.description && b.description.trim()) {
+          descriptionElement.className = 'biz-description';
+          descriptionElement.textContent = b.description;
+        }
+
         // Build the card structure
         card.innerHTML = `
           <div class="biz-name-container"></div>
           <p class="biz-meta"><span class="biz-suburb-container"></span></p>
           <p class="biz-address"></p>
-          <p class="biz-instagram"></p>
+          <div class="biz-contact-info">
+            <p class="biz-instagram"></p>
+            <p class="biz-website-container"></p>
+            <p class="biz-phone-container"></p>
+            <p class="biz-email-container"></p>
+          </div>
+          <div class="biz-description-container"></div>
         `;
 
         // Append the safe elements
@@ -407,6 +446,31 @@
         card.querySelector('.biz-suburb-container').appendChild(suburbElement);
         card.querySelector('.biz-address').appendChild(addressLink);
         card.querySelector('.biz-instagram').appendChild(igLink);
+        
+        // Add new fields if they exist
+        if (b.website && b.website.trim()) {
+          card.querySelector('.biz-website-container').appendChild(websiteLink);
+        } else {
+          card.querySelector('.biz-website-container').style.display = 'none';
+        }
+        
+        if (b.phone && b.phone.trim()) {
+          card.querySelector('.biz-phone-container').appendChild(phoneLink);
+        } else {
+          card.querySelector('.biz-phone-container').style.display = 'none';
+        }
+        
+        if (b.email && b.email.trim()) {
+          card.querySelector('.biz-email-container').appendChild(emailLink);
+        } else {
+          card.querySelector('.biz-email-container').style.display = 'none';
+        }
+        
+        if (b.description && b.description.trim()) {
+          card.querySelector('.biz-description-container').appendChild(descriptionElement);
+        } else {
+          card.querySelector('.biz-description-container').style.display = 'none';
+        }
 
         grid.appendChild(card);
       });
@@ -610,7 +674,19 @@
         }
         
         if (businesses.length === 0) {
-          throw new Error('No businesses found in selected data source');
+          // Handle empty data gracefully - show "no businesses" message instead of error
+          console.log('No businesses found in data source');
+          const container = document.querySelector('.x-stockists');
+          if (container) {
+            container.innerHTML = `
+              <div class="blf-no-businesses">
+                <h3>No businesses found</h3>
+                <p>There are currently no businesses saved in your directory.</p>
+                <p><small>Add businesses through the WordPress admin or configure your Google Sheets data source.</small></p>
+              </div>
+            `;
+          }
+          return; // Exit early, don't call init()
         }
         
         console.log('Sample business categories:', businesses.slice(0, 5).map(b => b.category));

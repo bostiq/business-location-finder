@@ -30,6 +30,59 @@
       padding: 2% 3%
       // margin: 4% auto
 
+    // Contact information styling
+    .biz-contact-info
+      display: flex
+      flex-direction: column
+      gap: 8px
+      
+      p
+        margin: 0
+        padding: 1% 0
+        line-height: 1.4
+        
+      .biz-website-container,
+      .biz-phone-container,
+      .biz-email-container
+        font-size: 0.9rem
+        padding: 4px 8px
+        border-radius: 3px
+        display: inline-block
+        transition: background-color $transition-speed
+        
+      .biz-website-container
+        background-color: color.adjust($primary-color, $alpha: -0.9)
+        color: $primary-color
+        
+        &:hover
+          background-color: color.adjust($primary-color, $alpha: -0.8)
+          
+      .biz-phone-container
+        background-color: color.adjust($butterscotch, $alpha: -0.9)
+        color: color.adjust($butterscotch, $lightness: -30%)
+        
+        &:hover
+          background-color: color.adjust($butterscotch, $alpha: -0.8)
+          
+      .biz-email-container
+        background-color: color.adjust($hunter-green, $alpha: -0.9)
+        color: $hunter-green
+        
+        &:hover
+          background-color: color.adjust($hunter-green, $alpha: -0.8)
+
+    // Description styling
+    .biz-description-container
+      .biz-description
+        font-size: 0.85rem
+        line-height: 1.5
+        color: color.adjust($k, $lightness: 10%)
+        font-style: italic
+        padding: 8px
+        background-color: color.adjust($light-gray, $lightness: 2%)
+        border-radius: 4px
+        border-left: 3px solid color.adjust($primary-color, $alpha: -0.7)
+
     &:hover
       transform: translateY(-3px)
       box-shadow: 0 2px 8px color.adjust($hunter-green, $alpha: -0.7)

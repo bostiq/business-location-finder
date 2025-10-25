@@ -1,34 +1,129 @@
 @use 'sass:color'
-// Variables
-$primary-color: #3498db
-$light-gray: #f9f9f9
-$dark-gray: #444
-$w: #fff
-$k: #000
-$links: #dd5162
-$border-color: #ddd
-$transition-speed: 0.3s
 
-// <-== COLORS ==->
+// ============================================
+// BASE COLORS SYSTEM
+// ============================================
 
-$magenta-haze: #953d6b
-$amaranth-purple: #9d2c43
-$indian-red: #dd5162
-$butterscotch: #ea9940
-$saffron: #f4c046
-$acid: #cee3a8
-$honeysuckle:#EBFE84
-$yellow-green: #92C73D
-$hunter-green: #245a34
-$dry-green: #386946
-$cadet-gray: #9da5ae
-$off-white: #f9f9f9
-
-   
+// Core system colors
 $black: #000000
 $white: #ffffff
-$red: #FF0000
-$trans-w: rgba(255,255,255,0)
-$trans-k: rgba(0,0,0,0)
+$transparent: transparent
 
-$warning: #9d2c43
+// ============================================
+// FRONT-END COLOR SCHEME
+// ============================================
+
+// Primary brand palette
+$primary-color: #3498db        // Main brand blue
+$secondary-color: #ea9940      // Warm accent orange
+
+// Extended brand colors (for variety and hierarchy)
+$magenta-haze: #953d6b         // Deep purple-red
+$amaranth-purple: #9d2c43      // Dark red-purple  
+$indian-red: #dd5162          // Bright red-pink
+$butterscotch: #ea9940        // Warm orange (alias for secondary)
+$saffron: #f4c046             // Golden yellow
+
+// Nature-inspired accent colors
+$acid-green: #cee3a8          // Light sage green
+$honeysuckle: #ebfe84         // Bright lime yellow
+$yellow-green: #92c73d        // Vibrant green
+$hunter-green: #245a34        // Deep forest green
+$dry-green: #386946           // Muted forest green
+
+// Neutral foundation
+$off-white: #f9f9f9           // Soft background
+$light-gray: #f9f9f9          // Light backgrounds (alias)
+$cadet-gray: #9da5ae          // Mid-tone gray
+$dark-gray: #444444           // Dark text
+
+// Functional colors
+$error-color: #9d2c43         // Error red (reuse amaranth)
+$warning-color: #ea9940       // Warning orange (reuse secondary)
+$success-color: #245a34       // Success green (reuse hunter)
+$info-color: #3498db          // Info blue (reuse primary)
+
+// Interactive elements
+$link-color: #dd5162          // Link color (reuse indian-red)
+$border-color: #ddd           // Standard borders
+$transition-speed: 0.3s       // Animation timing
+
+// Legacy aliases (for backward compatibility)
+$w: $white
+$k: $black
+$trans-w: rgba($white, 0)
+$trans-k: rgba($black, 0)
+$links: $link-color
+$warning: $warning-color
+
+// ============================================
+// ADMIN SETTINGS COLOR SCHEME
+// ============================================
+
+// WordPress admin inspired palette
+$admin-blue: #0073aa                    // Primary admin blue
+$admin-blue-light: #e7f3ff             // Light blue backgrounds
+$admin-blue-dark: #005a87              // Dark blue for emphasis
+
+// Admin accent colors
+$admin-orange: #ff8c00                 // Orange for Google Sheets
+$admin-orange-light: #fff2e7           // Light orange backgrounds
+$admin-green: #46b450                  // Success green
+$admin-green-light: #f0f8f0            // Light green backgrounds
+$admin-red: #dc3232                    // Error/warning red
+$admin-red-light: #fbeaea              // Light red backgrounds
+
+// Admin interface colors
+$admin-text-dark: #23282d              // Dark admin text
+$admin-text-muted: #666666             // Muted admin text
+$admin-border: #ddd                    // Admin borders
+$admin-background: #f1f1f1             // Admin background
+$admin-card-bg: #ffffff                // Card backgrounds
+
+// ============================================
+// ADMIN IMPORT PAGE COLOR SCHEME
+// ============================================
+
+// Data source specific colors
+$import-sheets-primary: $admin-orange       // Google Sheets theme
+$import-sheets-bg: $admin-orange-light      // Google Sheets backgrounds
+$import-database-primary: $admin-blue       // Database theme  
+$import-database-bg: $admin-blue-light      // Database backgrounds
+
+// Import page interface colors
+$import-form-bg: #fafafa                    // Form section backgrounds
+$import-form-border: $admin-blue            // Form borders
+$import-table-hover: #f8f9fa               // Table row hover
+$import-button-edit: $admin-blue            // Edit button color
+$import-button-delete: $admin-red           // Delete button color
+
+// Import page status colors
+$import-required: $admin-red                // Required field indicator
+$import-success: $admin-green              // Success messages
+$import-warning: $admin-orange             // Warning messages
+$import-error: $admin-red                  // Error messages
+
+// ============================================
+// COLOR UTILITY FUNCTIONS
+// ============================================
+
+// Function to get semantic color by name
+@function get-color($name)
+  @if $name == 'primary'
+    @return $primary-color
+  @else if $name == 'secondary' 
+    @return $secondary-color
+  @else if $name == 'success'
+    @return $success-color
+  @else if $name == 'warning'
+    @return $warning-color
+  @else if $name == 'error'
+    @return $error-color
+  @else if $name == 'info'
+    @return $info-color
+  @else
+    @return $black
+    
+// Function to create alpha variant
+@function alpha-color($color, $alpha: 0.1)
+  @return rgba($color, $alpha)
