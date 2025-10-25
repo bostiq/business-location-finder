@@ -441,6 +441,123 @@
   color: #0073aa;
 }
 
+#blf-edit-modal {
+  display: none;
+  position: fixed;
+  z-index: 100000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#blf-edit-modal .blf-modal-content {
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  width: 80%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+#blf-edit-modal .blf-modal-close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+#blf-edit-modal .blf-modal-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+#blf-edit-modal .blf-modal-actions .button {
+  margin-left: 10px;
+}
+#blf-edit-modal .blf-form-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+}
+#blf-edit-modal .blf-form-section h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 8px;
+}
+#blf-edit-modal .blf-form-section p {
+  margin-bottom: 15px;
+}
+#blf-edit-modal .blf-form-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+#blf-edit-modal .blf-form-section input,
+#blf-edit-modal .blf-form-section textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 8px 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#blf-edit-modal .blf-required {
+  font-weight: bold;
+}
+
+#blf-edit-modal {
+  background-color: black;
+}
+#blf-edit-modal .blf-modal-content {
+  background-color: #ffffff;
+  border-color: #ddd;
+  -webkit-box-shadow: 0 4px 6px black;
+          box-shadow: 0 4px 6px black;
+}
+#blf-edit-modal .blf-modal-close {
+  color: #666666;
+}
+#blf-edit-modal .blf-modal-close:hover, #blf-edit-modal .blf-modal-close:focus {
+  color: #000000;
+  text-decoration: none;
+}
+#blf-edit-modal .blf-form-section {
+  background: #f9f9f9;
+  border-color: #ddd;
+}
+#blf-edit-modal .blf-form-section h3 {
+  color: #23282d;
+  border-bottom-color: #ddd;
+}
+#blf-edit-modal .blf-form-section label {
+  color: #23282d;
+}
+#blf-edit-modal .blf-form-section input,
+#blf-edit-modal .blf-form-section textarea {
+  border-color: #ddd;
+}
+#blf-edit-modal .blf-form-section input:focus,
+#blf-edit-modal .blf-form-section textarea:focus {
+  border-color: #0073aa;
+  -webkit-box-shadow: 0 0 0 1px #0073aa;
+          box-shadow: 0 0 0 1px #0073aa;
+  outline: none;
+}
+#blf-edit-modal .blf-required {
+  color: #dc3232;
+}
+
 .blf-icon {
   display: inline-block;
   vertical-align: middle;
@@ -489,104 +606,6 @@
 .card {
   max-width: none;
   width: 100%;
-}
-
-#blf-edit-modal {
-  display: none !important;
-  position: fixed !important;
-  z-index: 100000 !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-#blf-edit-modal .blf-modal-content {
-  background-color: #fff !important;
-  margin: 5% auto !important;
-  padding: 20px !important;
-  border-radius: 5px !important;
-  border: 1px solid #ccc !important;
-  width: 80% !important;
-  max-width: 600px !important;
-  max-height: 80vh !important;
-  overflow-y: auto !important;
-  position: relative !important;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-}
-#blf-edit-modal .blf-modal-content h2 {
-  margin-top: 0 !important;
-  margin-bottom: 20px !important;
-  color: #23282d !important;
-}
-#blf-edit-modal .blf-modal-close {
-  color: #aaa !important;
-  float: right !important;
-  font-size: 28px !important;
-  font-weight: bold !important;
-  cursor: pointer !important;
-  position: absolute !important;
-  right: 15px !important;
-  top: 10px !important;
-}
-#blf-edit-modal .blf-modal-close:hover, #blf-edit-modal .blf-modal-close:focus {
-  color: #000 !important;
-  text-decoration: none !important;
-}
-#blf-edit-modal .blf-modal-actions {
-  margin-top: 20px !important;
-  text-align: right !important;
-}
-#blf-edit-modal .blf-modal-actions .button {
-  margin-left: 10px !important;
-}
-#blf-edit-modal .blf-form-section {
-  margin-bottom: 20px !important;
-  padding: 15px !important;
-  background: #f9f9f9 !important;
-  border: 1px solid #ddd !important;
-  border-radius: 4px !important;
-}
-#blf-edit-modal .blf-form-section h3 {
-  margin-top: 0 !important;
-  margin-bottom: 15px !important;
-  color: #23282d !important;
-  font-size: 16px !important;
-  border-bottom: 1px solid #ddd !important;
-  padding-bottom: 8px !important;
-}
-#blf-edit-modal .blf-form-section p {
-  margin-bottom: 15px !important;
-}
-#blf-edit-modal .blf-form-section label {
-  display: block !important;
-  margin-bottom: 5px !important;
-  font-weight: 600 !important;
-  color: #23282d !important;
-}
-#blf-edit-modal .blf-form-section input, #blf-edit-modal .blf-form-section textarea {
-  width: 100% !important;
-  max-width: 500px !important;
-  padding: 8px 12px !important;
-  border: 1px solid #ddd !important;
-  border-radius: 4px !important;
-  -webkit-box-sizing: border-box !important;
-          box-sizing: border-box !important;
-}
-#blf-edit-modal .blf-form-section input:focus, #blf-edit-modal .blf-form-section textarea:focus {
-  border-color: #0073aa !important;
-  outline: none !important;
-  -webkit-box-shadow: 0 0 0 1px #0073aa !important;
-          box-shadow: 0 0 0 1px #0073aa !important;
-}
-#blf-edit-modal .blf-required {
-  color: #d63638 !important;
-  font-weight: bold !important;
-}
-
-#blf-edit-modal[style*=block] {
-  display: block !important;
 }
 
 .biz-location-finder-admin .blf-version {
@@ -860,39 +879,4 @@
 }
 .biz-location-finder-admin .blf-data-table .blf-actions a:hover, .biz-location-finder-admin .blf-data-table .blf-actions button:hover, .biz-location-finder-admin .blf-data-table .blf-actions .button:hover {
   text-decoration: underline;
-}
-.biz-location-finder-admin #blf-edit-modal {
-  display: none;
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-.biz-location-finder-admin #blf-edit-modal .blf-modal-content {
-  margin: 5% auto;
-  padding: 20px;
-  border-radius: 5px;
-  width: 80%;
-  max-width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-}
-.biz-location-finder-admin #blf-edit-modal .blf-modal-content h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-.biz-location-finder-admin #blf-edit-modal .blf-modal-close {
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  position: absolute;
-  right: 15px;
-  top: 10px;
-}
-.biz-location-finder-admin #blf-edit-modal .blf-modal-close:hover, .biz-location-finder-admin #blf-edit-modal .blf-modal-close:focus {
-  text-decoration: none;
 }/*# sourceMappingURL=admin-styles.css.map */

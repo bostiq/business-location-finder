@@ -50,26 +50,26 @@
         display: inline-block
         transition: background-color $transition-speed
         
-      .biz-website-container
-        background-color: color.adjust($primary-color, $alpha: -0.9)
-        color: $primary-color
+      // .biz-website-container
+      //   background-color: color.adjust($primary-color, $alpha: -0.9)
+      //   color: $primary-color
         
-        &:hover
-          background-color: color.adjust($primary-color, $alpha: -0.8)
+      //   &:hover
+      //     background-color: color.adjust($primary-color, $alpha: -0.8)
           
-      .biz-phone-container
-        background-color: color.adjust($butterscotch, $alpha: -0.9)
-        color: color.adjust($butterscotch, $lightness: -30%)
+      // .biz-phone-container
+      //   background-color: color.adjust($butterscotch, $alpha: -0.9)
+      //   color: color.adjust($butterscotch, $lightness: -30%)
         
-        &:hover
-          background-color: color.adjust($butterscotch, $alpha: -0.8)
+      //   &:hover
+      //     background-color: color.adjust($butterscotch, $alpha: -0.8)
           
-      .biz-email-container
-        background-color: color.adjust($hunter-green, $alpha: -0.9)
-        color: $hunter-green
+      // .biz-email-container
+      //   background-color: color.adjust($hunter-green, $alpha: -0.9)
+      //   color: $hunter-green
         
-        &:hover
-          background-color: color.adjust($hunter-green, $alpha: -0.8)
+      //   &:hover
+      //     background-color: color.adjust($hunter-green, $alpha: -0.8)
 
     // Description styling
     .biz-description-container
@@ -92,4 +92,74 @@
       opacity: 1
       transform: translateY(0)
 
+// ============================================
+// FRONTEND HEROICONS STYLING
+// ============================================
+
+// Frontend icon base styling
+.blf-icon
+  display: inline-block
+  vertical-align: middle
+  
+  &.contact-icon
+    width: 16px
+    height: 16px
+    margin-right: 6px
+    color: $links
+    flex-shrink: 0
+
+// Business card contact links
+.x-stockists
+  .card
+    .biz-contact-info
+      a
+        display: flex
+        align-items: center
+        margin-bottom: 4px
+        // text-decoration: none
+        // color: $dark-gray
+        transition: color 0.2s ease
+        
+        &:hover
+          text-decoration: underline
+          
+        .blf-icon
+          margin-right: 8px
+          
+    .biz-address a
+      display: flex
+      align-items: center
+      text-decoration: none
+      // color: $dark-gray
+      transition: color 0.2s ease
       
+      &:hover
+        text-decoration: underline
+        
+      .blf-icon
+        margin-right: 8px
+
+// No businesses message
+.blf-no-businesses
+  padding: 20px
+  background: color.adjust($light-gray, $lightness: 2%)
+  border: 1px solid $border-color
+  border-radius: 5px
+  color: $dark-gray
+  text-align: center
+  margin: 20px 0
+  
+  h3
+    margin-top: 0
+    margin-bottom: 10px
+    color: $dark-gray
+    
+  p
+    margin-bottom: 10px
+    
+    &:last-child
+      margin-bottom: 0
+      
+    small
+      color: $cadet-gray
+      font-style: italic

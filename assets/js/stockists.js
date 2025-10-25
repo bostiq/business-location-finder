@@ -12,6 +12,29 @@
   // Helpers
   // -----------------------
   
+  // Frontend Heroicons SVG helper function
+  function heroicon(name, className = '', size = '20') {
+    const icons = {
+      'map-pin': '<path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>',
+      'phone': '<path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>',
+      'envelope': '<path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/>',
+      'globe-alt': '<path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>',
+      'camera': '<path d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"/><path fill-rule="evenodd" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008Z" clip-rule="evenodd"/>',
+      'arrow-top-right-on-square': '<path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75H15.75a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>'
+    };
+    
+    if (!icons[name]) {
+      console.warn(`Icon "${name}" not found`);
+      return '';
+    }
+    
+    const classAttr = className ? ` class="blf-icon ${className}"` : ' class="blf-icon"';
+    
+    return `<svg${classAttr} width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      ${icons[name]}
+    </svg>`;
+  }
+  
   function buildDynamicTabsForContainer(container, businesses) {
     console.log('=== DEBUGGING CATEGORY FILTERING ===');
     console.log('Container:', container);
@@ -386,13 +409,13 @@
         addressLink.href = mapsHref;
         addressLink.target = '_blank';
         addressLink.rel = 'noopener';
-        addressLink.textContent = b.address || '';
+        addressLink.innerHTML = `${heroicon('map-pin', 'contact-icon', '16')} ${b.address || ''}`;
 
         const igLink = document.createElement('a');
         igLink.href = igHref;
         igLink.target = '_blank';
         igLink.rel = 'noopener';
-        igLink.textContent = `@${igHandle}`;
+        igLink.innerHTML = `${heroicon('camera', 'contact-icon', '16')} @${igHandle}`;
 
         // Create website link if available
         const websiteLink = document.createElement('a');
@@ -400,7 +423,7 @@
           websiteLink.href = b.website.startsWith('http') ? b.website : `https://${b.website}`;
           websiteLink.target = '_blank';
           websiteLink.rel = 'noopener';
-          websiteLink.textContent = 'Visit Website';
+          websiteLink.innerHTML = `${heroicon('arrow-top-right-on-square', 'contact-icon', '16')} Visit Website`;
           websiteLink.className = 'biz-website';
         }
 
@@ -408,7 +431,7 @@
         const phoneLink = document.createElement('a');
         if (b.phone && b.phone.trim()) {
           phoneLink.href = `tel:${b.phone.replace(/\s/g, '')}`;
-          phoneLink.textContent = b.phone;
+          phoneLink.innerHTML = `${heroicon('phone', 'contact-icon', '16')} ${b.phone}`;
           phoneLink.className = 'biz-phone';
         }
 
@@ -416,7 +439,7 @@
         const emailLink = document.createElement('a');
         if (b.email && b.email.trim()) {
           emailLink.href = `mailto:${b.email}`;
-          emailLink.textContent = b.email;
+          emailLink.innerHTML = `${heroicon('envelope', 'contact-icon', '16')} ${b.email}`;
           emailLink.className = 'biz-email';
         }
 
@@ -645,8 +668,12 @@
 
   function fetchBusinessesAndInit() {
     // Use the new unified data endpoint that respects admin settings
-    const wpRoot = window.location.origin + window.location.pathname.split('/wp-dev')[0] + '/wp-dev';
-    const dataUrl = `${wpRoot}/wp-json/jq-stockists/v1/get-data`;
+    // const wpRoot = window.location.origin + window.location.pathname.split('/wp-dev')[0] + '/wp-dev';
+    // const dataUrl = `${wpRoot}/wp-json/jq-stockists/v1/get-data`;
+    // const dataUrl = `${window.location.origin}/wp-json/jq-stockists/v1/get-data`;
+    const dataUrl = myPluginData.apiUrl;
+
+
 
     console.log('Fetching data from unified endpoint:', dataUrl);
     

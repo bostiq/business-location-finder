@@ -1,0 +1,46 @@
+@use 'sass:color'
+@use 'colors' as *
+
+// Admin Modal Color Scheme
+// WordPress admin color theme integration
+
+
+#blf-edit-modal
+    // Background overlay
+    background-color: color.adjust($black, $alpha: 0.5)
+
+    .blf-modal-content
+        background-color: $white
+        border-color: $admin-border
+        box-shadow: 0 4px 6px color.adjust($black, $alpha: 0.1)
+
+    .blf-modal-close
+        color: $admin-text-muted
+
+        &:hover,
+        &:focus
+            color: $black
+            text-decoration: none
+
+    .blf-form-section
+        background: $off-white
+        border-color: $admin-border
+
+        h3
+            color: $admin-text-dark
+            border-bottom-color: $admin-border
+
+        label
+            color: $admin-text-dark
+
+        input,
+        textarea
+            border-color: $admin-border
+
+            &:focus
+                border-color: $admin-blue
+                box-shadow: 0 0 0 1px $admin-blue
+                outline: none
+
+    .blf-required
+        color: $admin-red

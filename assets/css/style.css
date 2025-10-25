@@ -185,27 +185,6 @@
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-.x-stockists .card .biz-contact-info .biz-website-container {
-  background-color: rgba(52, 152, 219, 0.1);
-  color: #3498db;
-}
-.x-stockists .card .biz-contact-info .biz-website-container:hover {
-  background-color: rgba(52, 152, 219, 0.2);
-}
-.x-stockists .card .biz-contact-info .biz-phone-container {
-  background-color: rgba(234, 153, 64, 0.1);
-  color: rgb(130.6367924528, 75.2358490566, 14.3632075472);
-}
-.x-stockists .card .biz-contact-info .biz-phone-container:hover {
-  background-color: rgba(234, 153, 64, 0.2);
-}
-.x-stockists .card .biz-contact-info .biz-email-container {
-  background-color: rgba(36, 90, 52, 0.1);
-  color: #245a34;
-}
-.x-stockists .card .biz-contact-info .biz-email-container:hover {
-  background-color: rgba(36, 90, 52, 0.2);
-}
 .x-stockists .card .biz-description-container .biz-description {
   font-size: 0.85rem;
   line-height: 1.5;
@@ -227,6 +206,54 @@
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.blf-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+.blf-icon.contact-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  color: #dd5162;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.x-stockists .card .biz-contact-info a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 4px;
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+.x-stockists .card .biz-contact-info a:hover {
+  text-decoration: underline;
+}
+.x-stockists .card .biz-contact-info a .blf-icon {
+  margin-right: 8px;
+}
+.x-stockists .card .biz-address a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+.x-stockists .card .biz-address a:hover {
+  text-decoration: underline;
+}
+.x-stockists .card .biz-address a .blf-icon {
+  margin-right: 8px;
 }
 
 .blf-no-businesses {
@@ -255,7 +282,7 @@
 }
 
 .x-stockists {
-  color: #222;
+  color: rgb(34.017, 34.017, 34.017);
 }
 
 .x-stockists .grid {

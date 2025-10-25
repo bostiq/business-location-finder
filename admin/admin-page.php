@@ -188,22 +188,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>    <!-- Status Overview -->
     <div class="card">
-        <h2>📊 Data Source Status</h2>
+        <h2><?php echo blf_heroicon('chart-bar-square', 'header-icon'); ?> Data Source Status</h2>
         <div class="blf-dashboard-info">
             <div class="blf-info-box blue">
-                <h4>🗃️ Database Storage</h4>
+                <h4><?php echo blf_heroicon('archive-box', 'section-icon'); ?> Database Storage</h4>
                 <p><strong><?php echo esc_html($business_count); ?> businesses</strong> in local database</p>
                 <p><small>Fast, reliable, no external dependencies</small></p>
             </div>
             <div class="blf-info-box orange">
-                <h4>📊 Google Sheets</h4>
+                <h4><?php echo blf_heroicon('chart-bar-square', 'section-icon'); ?> Google Sheets</h4>
                 <p><a href="<?php echo esc_url($current_url); ?>" target="_blank">View Current Sheet</a></p>
                 <p><small>External data source, requires internet</small></p>
             </div>
         </div>
         
         <div class="blf-info-box green">
-            <h4>🎯 Current Behavior</h4>
+            <h4><?php echo blf_heroicon('cursor-arrow-rays', 'section-icon'); ?> Current Behavior</h4>
             <?php if ($business_count > 0): ?>
                 <p><strong>Frontend will display database businesses.</strong> The system automatically prioritizes local database when available.</p>
                 <p><small>To use Google Sheets instead, manage data via <a href="<?php echo admin_url('admin.php?page=biz-location-finder-import'); ?>">Import Data</a> page.</small></p>
@@ -220,15 +220,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if ($data_source === 'google_sheets'): 
     ?>
     <div class="card blf-sheets-message-card">
-        <h2>📊 Google Sheets Mode</h2>
+        <h2><?php echo blf_heroicon('chart-bar-square', 'header-icon'); ?> Google Sheets Mode</h2>
         <p><strong>Data source is set to Google Sheets.</strong> Your business data comes from the external spreadsheet configured above.</p>
         <p>To add or edit businesses:</p>
         <ul>
-            <li>📝 <strong>Edit your Google Sheet</strong> directly in Google Sheets</li>
-            <li>🔄 <strong>Changes appear automatically</strong> on your website</li>
-            <li>🗃️ <strong>Or switch to "Database Records"</strong> above to manage data locally</li>
+            <li><?php echo blf_heroicon('pencil', 'list-icon'); ?> <strong>Edit your Google Sheet</strong> directly in Google Sheets</li>
+            <li><?php echo blf_heroicon('arrow-path', 'list-icon'); ?> <strong>Changes appear automatically</strong> on your website</li>
+            <li><?php echo blf_heroicon('archive-box', 'list-icon'); ?> <strong>Or switch to "Database Records"</strong> above to manage data locally</li>
         </ul>
-        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary">🔗 Open Google Sheet</a></p>
+        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary"><?php echo blf_heroicon('arrow-top-right-on-square', '', '16'); ?> Open Google Sheet</a></p>
     </div>
     <?php endif; // End of Google Sheets message ?>
 

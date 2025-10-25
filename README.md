@@ -162,13 +162,13 @@ The system adapts to ANY category structure:
 
 ### **System Information**
 
-**Current Version**: v2.1.6 (October 2025)
+**Current Version**: v2.1.6.1 (October 2025)
 
 **Component Versions:**
-- Frontend: stockists.js v2.1.6
-- Backend: biz-location-finder.php v2.1.6
-- Admin Interface: v2.1.6 (Database CRUD)
-- Styles: SASS/CSS v2.1.6 (Optimized)
+- Frontend: stockists.js v2.1.6.1
+- Backend: biz-location-finder.php v2.1.6.1
+- Admin Interface: v2.1.6.1 (Database CRUD)
+- Styles: SASS/CSS v2.1.6.1 (Optimized)
 
 ### **Architecture**
 
@@ -219,6 +219,8 @@ business-location-finder/
 │       ├── _search.sass        # Search input styling
 │       ├── _tab-Nav.sass       # Tab navigation styling
 │       ├── _tabs-content.sass  # Tab panel styling
+│       ├── _admin-modal-color-scheme.sass # Admin modal color scheme
+│       ├── _admin-modal.sass # Admin modal 
 │       ├── _admin-styles-color-scheme.sass # Admin color scheme
 │       ├── _import-page.sass   # Import page structure
 │       └── _import-page-color-scheme.sass  # Import page colors
@@ -259,9 +261,10 @@ business-location-finder/
 
 See [VERSION_HISTORY.md](VERSION_HISTORY.md) for detailed version information and changelog.
 
-**Current Version**: v2.1.6 (October 2025)
+**Current Version**: v2.1.6.1 (October 2025)
 
 ### Recent Updates
+- **v2.1.6.1**: Heroicons Solid SVG implementation on front-end
 - **v2.1.6**: Heroicons Solid SVG implementation replacing emoji icons
 - **v2.1.5**: Instagram field conditional rendering fix
 - **v2.1.4**: Frontend tab switching functionality bug fix

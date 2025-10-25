@@ -6,7 +6,7 @@
  * Description: A dynamic, interactive business location finder
  * with tabbed interface, search functionality, and shortcode support.
  * 
- * Version: 2.1.6
+ * Version: 2.1.6.1
  * Author: Lorenzo Colen
  * Author URI: https://indexwebmedia.com/
  * License: GPL v2 or later
@@ -24,7 +24,7 @@
  * @author    Lorenzo Colen <info@indexwebmedia.com>
  * @copyright 2025 Index Web Media
  * @license   GPL-2.0-or-later <https://www.gnu.org/licenses/gpl-2.0.html>
- * @CVN       2.1.6
+ * @CVN       2.1.6.1
  * @link      https://indexwebmedia.com/
  * @tag       WordPress, plugin, business directory, location finder, shortcode
  * @since     1.0.0
@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
 /* Define plugin constants */
 define('BLF_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('BLF_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('BLF_VERSION', '2.1.6');
+define('BLF_VERSION', '2.1.6.1');
 
 /**
  * Main Plugin Class
@@ -90,25 +90,31 @@ class BizLocationFinder {
     }
     
     public function enqueue_scripts() {
-        /* Only enqueue if shortcode is being used */
-        global $post;
-        if (is_singular() && is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'biz_location_finder')) {
-            wp_enqueue_style(
-                'biz-location-finder-css',
-                BLF_PLUGIN_URL . 'assets/css/style.min.css',
-                array(),
-                BLF_VERSION
-            );
-            
-            wp_enqueue_script(
-                'biz-location-finder-js',
-                BLF_PLUGIN_URL . 'assets/js/stockists.js',
-                array(),
-                BLF_VERSION,
-                true
-            );
-        }
+    /* Only enqueue if shortcode is being used */
+    global $post;
+    if (is_singular() && is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'biz_location_finder')) {
+        wp_enqueue_style(
+            'biz-location-finder-css',
+            BLF_PLUGIN_URL . 'assets/css/style.min.css',
+            array(),
+            BLF_VERSION
+        );
+        
+        wp_enqueue_script(
+            'biz-location-finder-js',
+            BLF_PLUGIN_URL . 'assets/js/stockists.js',
+            array(),
+            BLF_VERSION,
+            true
+        );
+
+        // ✅ Localize the REST API URL for use in JS
+        wp_localize_script('biz-location-finder-js', 'myPluginData', [
+            'apiUrl' => esc_url_raw(rest_url('jq-stockists/v1/get-data')),
+        ]);
     }
+}
+
     
     public function admin_enqueue_scripts($hook) {
         /* Only load on our admin pages */
@@ -782,6 +788,12 @@ if (!function_exists('blf_heroicon')) {
             'exclamation-triangle' => '<path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd"/>',
             'clipboard-document-list' => '<path fill-rule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9.375a3.375 3.375 0 0 1 3.375-3.375H7.5c0-.621.504-1.125 1.125-1.125v-.75C8.625 4.504 8.121 4 7.5 4s-1.125.504-1.125 1.125V6ZM6 12a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V12Zm2.25 0a.75.75 0 0 1 .75-.75h3.75a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75ZM6 15a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V15Zm2.25 0a.75.75 0 0 1 .75-.75h3.75a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75ZM6 18a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V18Zm2.25 0a.75.75 0 0 1 .75-.75h3.75a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"/><path d="M8.625 7.5c0 1.035.84 1.875 1.875 1.875h2.25A1.875 1.875 0 0 0 14.625 7.5V6.75h.75a.75.75 0 0 1 0 1.5H15v-.75h-.375c-.621 0-1.125-.504-1.125-1.125V6H8.625v1.5Z"/>',
             'arrow-top-right-on-square' => '<path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75H15.75a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>',
+            'arrow-up-tray' => '<path fill-rule="evenodd" d="M11.47 2.47a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06l-3.22-3.22V16.5a.75.75 0 0 1-1.5 0V4.81L8.03 8.03a.75.75 0 0 1-1.06-1.06l4.5-4.5ZM3 15.75a.75.75 0 0 1 .75.75v2.25a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V16.5a.75.75 0 0 1 1.5 0v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V16.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>',
+            'arrow-down-tray' => '<path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06L11.25 14.69V3a.75.75 0 0 1 .75-.75ZM3 15.75a.75.75 0 0 1 .75.75v2.25a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5V16.5a.75.75 0 0 1 1.5 0v2.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V16.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>',
+            'map' => '<path fill-rule="evenodd" d="M8.161 2.58a1.875 1.875 0 0 1 1.678 0l4.993 2.498c.106.052.23.052.336 0l3.869-1.935A1.875 1.875 0 0 1 21.75 4.82v12.485c0 .71-.401 1.36-1.037 1.677l-4.875 2.437a1.875 1.875 0 0 1-1.676 0l-4.994-2.497a.375.375 0 0 0-.336 0l-3.868 1.935A1.875 1.875 0 0 1 2.25 19.18V6.695c0-.71.401-1.36 1.036-1.677L8.161 2.58ZM9 4.904L3.75 7.455v11.85l5.25-2.629V4.904ZM10.5 16.676l6-3V2.824l-6 3v10.852ZM15 13.467l5.25 2.629V4.246L15 6.875v6.592Z" clip-rule="evenodd"/>',
+            'phone' => '<path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>',
+            'envelope' => '<path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/>',
+            'globe-alt' => '<path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>',
         );
         
         if (!isset($icons[$icon_name])) {

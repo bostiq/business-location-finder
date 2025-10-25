@@ -2,35 +2,13 @@
 @use 'colors' as *
 @use 'index' as *
 
-// No businesses message
-.blf-no-businesses
-  padding: 20px
-  background: color.adjust($light-gray, $lightness: 2%)
-  border: 1px solid $border-color
-  border-radius: 5px
-  color: $dark-gray
-  text-align: center
-  margin: 20px 0
-  
-  h3
-    margin-top: 0
-    margin-bottom: 10px
-    color: $dark-gray
-    
-  p
-    margin-bottom: 10px
-    
-    &:last-child
-      margin-bottom: 0
-      
-    small
-      color: $cadet-gray
-      font-style: italic
+
 
 // Container
 .x-stockists
   // padding: 24px
-  color: #222
+  // color: #222
+  color: color.adjust($black, $lightness: 13.34%) // Slightly lighter black
   // font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial
 
 // Grid layout

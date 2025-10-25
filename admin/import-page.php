@@ -119,7 +119,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                 <strong>Database Mode:</strong> Add and manage businesses directly through the forms below.
             <?php endif; ?>
         </p>
-        <p><a href="<?php echo admin_url('admin.php?page=biz-location-finder'); ?>" class="button button-secondary">⚙️ Change Data Source</a></p>
+        <p><a href="<?php echo admin_url('admin.php?page=biz-location-finder'); ?>" class="button button-secondary"><?php echo blf_heroicon('cog-6-tooth', 'button-icon'); ?> Change Data Source</a></p>
     </div>
     
     <!-- Google Sheets Configuration (show when Google Sheets is selected) -->
@@ -149,7 +149,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                             5. Click <strong>Publish</strong> and copy the URL<br>
                             6. Paste the URL here<br>
                             <br>
-                            <strong style="color: #d63638;">⚠️ IMPORTANT:</strong> Make sure your URL looks like:<br>
+                            <strong style="color: #d63638;"><?php echo blf_heroicon('exclamation-triangle', '', '16'); ?> IMPORTANT:</strong> Make sure your URL looks like:<br>
                             <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=SHEET_GID</code><br>
                             <strong>NOT</strong> like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit...</code>
                         </p>
@@ -172,7 +172,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
             <p><em>The system will automatically create tabs based on whatever categories you have in your data!</em></p>
         </div>
         
-        <p><strong>Current Sheet:</strong> <a href="<?php echo esc_url($current_url); ?>" target="_blank">🔗 Test Current URL</a></p>
+        <p><strong>Current Sheet:</strong> <a href="<?php echo esc_url($current_url); ?>" target="_blank"><?php echo blf_heroicon('arrow-top-right-on-square', 'link-icon'); ?> Test Current URL</a></p>
     </div>
     <?php endif; ?>
     
@@ -289,13 +289,13 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                             </td>
                             <td>
                                 <?php if (!empty($business['phone'])): ?>
-                                    📞 <a href="tel:<?php echo esc_attr($business['phone']); ?>"><?php echo esc_html($business['phone']); ?></a><br>
+                                    <?php echo blf_heroicon('phone', '', '16'); ?> <a href="tel:<?php echo esc_attr($business['phone']); ?>"><?php echo esc_html($business['phone']); ?></a><br>
                                 <?php endif; ?>
                                 <?php if (!empty($business['email'])): ?>
-                                    ✉️ <a href="mailto:<?php echo esc_attr($business['email']); ?>"><?php echo esc_html($business['email']); ?></a><br>
+                                    <?php echo blf_heroicon('envelope', '', '16'); ?> <a href="mailto:<?php echo esc_attr($business['email']); ?>"><?php echo esc_html($business['email']); ?></a><br>
                                 <?php endif; ?>
                                 <?php if (!empty($business['website'])): ?>
-                                    🌐 <a href="<?php echo esc_url($business['website']); ?>" target="_blank">Website</a>
+                                    <?php echo blf_heroicon('globe-alt', '', '16'); ?> <a href="<?php echo esc_url($business['website']); ?>" target="_blank">Website</a>
                                 <?php endif; ?>
                             </td>
                             <td>
@@ -339,11 +339,11 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
         <h2><?php echo blf_heroicon('rocket-launch', 'header-icon'); ?> Future Features</h2>
         <p>Coming in future versions:</p>
         <ul>
-            <li>📤 <strong>CSV Export:</strong> Download your business data as CSV</li>
-            <li>📥 <strong>CSV Import:</strong> Bulk upload businesses via CSV file</li>
-            <li>🔄 <strong>Bulk Operations:</strong> Delete or update multiple businesses at once</li>
-            <li>🎯 <strong>Categories Management:</strong> Organize and manage business categories</li>
-            <li>🗺️ <strong>Map Integration:</strong> Display businesses on interactive maps</li>
+            <li><?php echo blf_heroicon('arrow-up-tray', 'list-icon'); ?> <strong>CSV Export:</strong> Download your business data as CSV</li>
+            <li><?php echo blf_heroicon('arrow-down-tray', 'list-icon'); ?> <strong>CSV Import:</strong> Bulk upload businesses via CSV file</li>
+            <li><?php echo blf_heroicon('arrow-path', 'list-icon'); ?> <strong>Bulk Operations:</strong> Delete or update multiple businesses at once</li>
+            <li><?php echo blf_heroicon('cursor-arrow-rays', 'list-icon'); ?> <strong>Categories Management:</strong> Organize and manage business categories</li>
+            <li><?php echo blf_heroicon('map', 'list-icon'); ?> <strong>Map Integration:</strong> Display businesses on interactive maps</li>
         </ul>
         
         <h3>Expected CSV Format</h3>
@@ -375,96 +375,6 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
 </div>
 
 <!-- Edit Business Modal -->
-<style>
-#blf-edit-modal {
-    display: none;
-    position: fixed;
-    z-index: 100000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-#blf-edit-modal .blf-modal-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 80%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-#blf-edit-modal .blf-modal-close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    right: 15px;
-    top: 10px;
-}
-#blf-edit-modal .blf-modal-close:hover,
-#blf-edit-modal .blf-modal-close:focus {
-    color: #000;
-    text-decoration: none;
-}
-#blf-edit-modal .blf-modal-actions {
-    margin-top: 20px;
-    text-align: right;
-}
-#blf-edit-modal .blf-modal-actions .button {
-    margin-left: 10px;
-}
-#blf-edit-modal .blf-form-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-#blf-edit-modal .blf-form-section h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: #23282d;
-    font-size: 16px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 8px;
-}
-#blf-edit-modal .blf-form-section p {
-    margin-bottom: 15px;
-}
-#blf-edit-modal .blf-form-section label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #23282d;
-}
-#blf-edit-modal .blf-form-section input,
-#blf-edit-modal .blf-form-section textarea {
-    width: 100%;
-    max-width: 500px;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-#blf-edit-modal .blf-form-section input:focus,
-#blf-edit-modal .blf-form-section textarea:focus {
-    border-color: #0073aa;
-    outline: none;
-    box-shadow: 0 0 0 1px #0073aa;
-}
-#blf-edit-modal .blf-required {
-    color: #d63638;
-    font-weight: bold;
-}
-</style>
 <div id="blf-edit-modal" class="blf-modal" style="display: none;">
     <div class="blf-modal-content">
         <span class="blf-modal-close">&times;</span>

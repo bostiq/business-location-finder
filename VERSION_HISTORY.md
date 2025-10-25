@@ -2,32 +2,30 @@
 
 ## Version History
 
-### v2.1.6 (Current)
+### v2.1.6.1 (Current)
+**Heroicons Solid SVG Implementation - Front-end**
+- **UI Enhancement**: Added icons with Heroicons Solid SVG icons throughout Front-end
+
+### v2.1.6 (previous)
 **Heroicons Solid SVG Implementation**
 - **UI Enhancement**: Replaced all emoji icons with professional Heroicons Solid SVG icons throughout admin interface
 - **Icon System**: Created centralized `blf_heroicon()` helper function for consistent icon rendering
-- **Visual Upgrade**: Implemented proper SVG icons with consistent sizing, colors, and spacing
-- **Icon Mapping**: Chart-bar-square (📊), archive-box (🗃️), cog-6-tooth (⚙️), plus (➕), pencil (📝), rocket-launch (🚀), etc.
 - **CSS Framework**: Added comprehensive icon styling system with size variants and semantic classes
-- **Professional Polish**: Enhanced admin interface appearance with modern, scalable vector icons
 
 ### v2.1.5 (Previous)
 **Instagram Field Conditional Rendering Fix**
 - **Bug Fix**: Fixed Instagram link rendering when no Instagram handle is provided for businesses
 - **Frontend Fix**: Instagram section now properly hides when empty instead of showing broken/empty links
 - **Conditional Logic**: Added proper conditional rendering to match other contact fields (website, phone, email)
-- **User Experience**: Cleaner business cards with no confusing empty social media links
-- **Code Consistency**: Instagram field now follows the same pattern as other optional contact fields
 - **JavaScript Enhancement**: Updated renderCards function in stockists.js with proper field validation
 
 ### v2.1.4 (Previous)
 **Frontend Tab Switching Bug Fix**
-- **Bug Fix**: Fixed critical tab switching functionality where content would disappear when clicking category tabs
-- **JavaScript Fix**: Corrected panel selection logic in setupTabs function using direct ID lookup instead of data attribute queries
-- **Performance Fix**: Optimized filterPanel function to call revealCards only once after filtering completion
-- **DOM Management**: Improved tab panel creation with consistent ID scoping and reliable selectors
-- **User Experience**: Tab switching now works seamlessly with proper content visibility and smooth transitions
-- **Production Deployment**: Created production-007 build with complete tab functionality
+- **Bug Fix**:
+- - Fixed critical tab switching functionality where content would disappear when clicking category tab.
+- - Corrected panel selection logic in setupTabs function using direct ID lookup instead of data attribute queries
+- - Optimized filterPanel function to call revealCards only once after filtering completion
+- - **DOM Management**: Improved tab panel creation with consistent ID scoping and reliable selectors
 
 ### v2.1.3 (Previous)
 **Critical Bug Fix - Edit Business Modal**
