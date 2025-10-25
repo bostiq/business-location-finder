@@ -3,3 +3,6 @@
 node_modules/
 *.zip
 .vscode/settings.json
+
+# Build and deployment scripts
+*.sh
