@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.1.5 - Instagram field conditional rendering fix
-    console.log('Running Biz Location Finder v2.1.5');
+    // Biz Location Finder v2.1.6 - Heroicons SVG implementation
+    console.log('Running Biz Location Finder v2.1.6');
   
   // -----------------------
   // Data

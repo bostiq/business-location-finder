@@ -105,11 +105,11 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
     
     <!-- Data Source Status Indicator -->
     <div class="card blf-data-source-status">
-        <h2>📊 Current Data Source: 
+        <h2><?php echo blf_heroicon('chart-bar-square', 'header-icon'); ?> Current Data Source: 
             <?php if ($data_source === 'google_sheets'): ?>
-                <span class="blf-source-google-sheets">📊 Google Sheets</span>
+                <span class="blf-source-google-sheets"><?php echo blf_heroicon('chart-bar-square', 'status-icon'); ?> Google Sheets</span>
             <?php else: ?>
-                <span class="blf-source-database">🗃️ Database Records</span>
+                <span class="blf-source-database"><?php echo blf_heroicon('archive-box', 'status-icon'); ?> Database Records</span>
             <?php endif; ?>
         </h2>
         <p>
@@ -125,7 +125,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
     <!-- Google Sheets Configuration (show when Google Sheets is selected) -->
     <?php if ($data_source === 'google_sheets'): ?>
     <div class="card">
-        <h2>📊 Google Sheets Configuration</h2>
+        <h2><?php echo blf_heroicon('chart-bar-square', 'header-icon'); ?> Google Sheets Configuration</h2>
         <form method="post" action="">
             <?php wp_nonce_field('blf_settings_nonce'); ?>
             <table class="form-table">
@@ -160,7 +160,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
         </form>
         
         <div class="blf-sheets-config-info">
-            <h4>📋 Required CSV Format:</h4>
+            <h4><?php echo blf_heroicon('clipboard-document-list', 'section-icon'); ?> Required CSV Format:</h4>
             <p>Your Google Sheet must have these columns (in any order):</p>
             <ul>
                 <li><strong>name</strong> - Business name</li>
@@ -181,7 +181,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
     <div class="blf-database-section">
         <!-- Add Business Form -->
         <div class="card">
-            <h2>➕ Add New Business</h2>
+            <h2><?php echo blf_heroicon('plus', 'header-icon'); ?> Add New Business</h2>
             <form method="post" action="" class="blf-form" id="blf-add-business-form">
                 <?php wp_nonce_field('blf_add_business_nonce'); ?>
                 
@@ -257,7 +257,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
         
         <!-- Existing Businesses Table -->
         <div class="card">
-            <h2>🗃️ Manage Existing Businesses (<?php echo $business_count; ?> total)</h2>
+            <h2><?php echo blf_heroicon('archive-box', 'header-icon'); ?> Manage Existing Businesses (<?php echo $business_count; ?> total)</h2>
             
             <?php if ($business_count > 0): ?>
                 <table class="wp-list-table widefat striped blf-data-table">
@@ -336,7 +336,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
     
     <!-- Future Features Section -->
     <div class="card">
-        <h2>🚀 Future Features</h2>
+        <h2><?php echo blf_heroicon('rocket-launch', 'header-icon'); ?> Future Features</h2>
         <p>Coming in future versions:</p>
         <ul>
             <li>📤 <strong>CSV Export:</strong> Download your business data as CSV</li>

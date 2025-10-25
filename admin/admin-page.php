@@ -29,15 +29,15 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
     <!-- Google Sheets Mode Indicator -->
     <?php if ($data_source === 'google_sheets'): ?>
     <div class="card blf-sheets-mode-indicator">
-        <h2>📊 Google Sheets Mode</h2>
+        <h2><?php echo blf_heroicon('chart-bar-square', 'header-icon'); ?> Google Sheets Mode</h2>
         <p><strong>Data source is set to Google Sheets.</strong> Your business data comes from the external spreadsheet configured below.</p>
         <p>To add or edit businesses:</p>
         <ul>
-            <li>📝 <strong>Edit your Google Sheet</strong> directly in Google Sheets</li>
-            <li>🔄 <strong>Changes appear automatically</strong> on your website</li>
-            <li>🗃️ <strong>Or switch to "Database Records"</strong> below to manage data locally</li>
+            <li><?php echo blf_heroicon('pencil', 'list-icon'); ?> <strong>Edit your Google Sheet</strong> directly in Google Sheets</li>
+            <li><?php echo blf_heroicon('arrow-path', 'list-icon'); ?> <strong>Changes appear automatically</strong> on your website</li>
+            <li><?php echo blf_heroicon('archive-box', 'list-icon'); ?> <strong>Or switch to "Database Records"</strong> below to manage data locally</li>
         </ul>
-        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary">🔗 Open Google Sheet</a></p>
+        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary"><?php echo blf_heroicon('arrow-top-right-on-square', 'button-icon'); ?> Open Google Sheet</a></p>
     </div>
     <?php endif; ?>
     
@@ -45,7 +45,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
     <div class="blf-top-section">
         <!-- Data Source Selection -->
         <div class="card blf-config-card">
-            <h2>⚙️ Data Source Configuration</h2>
+            <h2><?php echo blf_heroicon('cog-6-tooth', 'header-icon'); ?> Data Source Configuration</h2>
             
             <form method="post" action="options.php">
                 <?php settings_fields('blf_settings'); ?>
@@ -64,12 +64,12 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                     <fieldset class="blf-data-source-options">
                         <label class="blf-source-option <?php echo ($data_source === 'google_sheets') ? 'selected' : ''; ?>">
                             <input type="radio" name="blf_data_source" value="google_sheets" <?php checked($data_source, 'google_sheets'); ?> />
-                            <strong>📊 Google Sheets</strong> - Use external Google Sheets data
+                            <?php echo blf_heroicon('chart-bar-square', 'option-icon'); ?> <strong>Google Sheets</strong> - Use external Google Sheets data
                             <small>Perfect for collaborating with team members or using existing spreadsheets</small>
                         </label>
                         <label class="blf-source-option <?php echo ($data_source === 'database') ? 'selected' : ''; ?>">
                             <input type="radio" name="blf_data_source" value="database" <?php checked($data_source, 'database'); ?> />
-                            <strong>🗃️ Database Records</strong> - Use locally managed business data
+                            <?php echo blf_heroicon('archive-box', 'option-icon'); ?> <strong>Database Records</strong> - Use locally managed business data
                             <small>Add and manage businesses directly through this admin interface</small>
                         </label>
                     </fieldset>
@@ -87,7 +87,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                     <!-- Inline Google Sheets Configuration Card -->
                     <?php if ($data_source === 'google_sheets'): ?>
                     <div class="blf-sheets-detailed-config">
-                        <h4>📊 Google Sheets Configuration</h4>
+                        <h4><?php echo blf_heroicon('chart-bar-square', 'section-icon'); ?> Google Sheets Configuration</h4>
                         <div class="blf-config-instructions">
                             <p><strong>How to get your Google Sheets export URL:</strong></p>
                             <ol>
@@ -100,13 +100,13 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                             </ol>
                             
                             <div class="blf-url-format-warning">
-                                <p><strong style="color: #d63638;">⚠️ IMPORTANT:</strong> Make sure your URL looks like:</p>
+                                <p><strong style="color: #d63638;"><?php echo blf_heroicon('exclamation-triangle', 'warning-icon'); ?> IMPORTANT:</strong> Make sure your URL looks like:</p>
                                 <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=SHEET_GID</code>
                                 <p><strong>NOT</strong> like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit...</code></p>
                             </div>
                             
                             <div class="blf-csv-format-info">
-                                <h5>📋 Required CSV Format:</h5>
+                                <h5><?php echo blf_heroicon('clipboard-document-list', 'section-icon'); ?> Required CSV Format:</h5>
                                 <p>Your Google Sheet must have these columns (in any order):</p>
                                 <ul>
                                     <li><strong>name</strong> - Business name</li>
@@ -126,7 +126,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                     <div class="blf-database-management">
                         <p><strong>Manage your business records:</strong></p>
                         <a href="<?php echo admin_url('admin.php?page=biz-location-finder-import'); ?>" class="button button-primary">
-                            ➕ Add or Edit Records
+                            <?php echo blf_heroicon('plus', 'link-icon'); ?> Add or Edit Records
                         </a>
                         <p class="description">Add new businesses, edit existing records, or bulk import data</p>
                     </div>
@@ -142,7 +142,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
         
         <!-- Quick Start Guide -->
         <div class="card blf-quick-start-card">
-            <h2>🚀 Quick Start</h2>
+            <h2><?php echo blf_heroicon('rocket-launch', 'header-icon'); ?> Quick Start</h2>
             <div class="blf-database-list">
                 <h4>Display Your Businesses:</h4>
                 <ol>

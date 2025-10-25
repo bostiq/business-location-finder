@@ -2,7 +2,16 @@
 
 ## Version History
 
-### v2.1.5 (Current)
+### v2.1.6 (Current)
+**Heroicons Solid SVG Implementation**
+- **UI Enhancement**: Replaced all emoji icons with professional Heroicons Solid SVG icons throughout admin interface
+- **Icon System**: Created centralized `blf_heroicon()` helper function for consistent icon rendering
+- **Visual Upgrade**: Implemented proper SVG icons with consistent sizing, colors, and spacing
+- **Icon Mapping**: Chart-bar-square (📊), archive-box (🗃️), cog-6-tooth (⚙️), plus (➕), pencil (📝), rocket-launch (🚀), etc.
+- **CSS Framework**: Added comprehensive icon styling system with size variants and semantic classes
+- **Professional Polish**: Enhanced admin interface appearance with modern, scalable vector icons
+
+### v2.1.5 (Previous)
 **Instagram Field Conditional Rendering Fix**
 - **Bug Fix**: Fixed Instagram link rendering when no Instagram handle is provided for businesses
 - **Frontend Fix**: Instagram section now properly hides when empty instead of showing broken/empty links

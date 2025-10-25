@@ -441,6 +441,51 @@
   color: #0073aa;
 }
 
+.blf-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+.blf-icon.header-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  color: #0073aa;
+}
+.blf-icon.section-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  color: #0073aa;
+}
+.blf-icon.list-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  color: #ff8c00;
+}
+.blf-icon.option-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  color: #0073aa;
+}
+.blf-icon.status-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}
+.blf-icon.warning-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  color: #dc3232;
+}
+.blf-icon.link-icon, .blf-icon.button-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
 .card {
   max-width: none;
   width: 100%;
