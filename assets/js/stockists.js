@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.1.3 - Modal edit functionality bug fix
-    console.log('Running Biz Location Finder v2.1.3');
+    // Biz Location Finder v2.1.4 - Frontend tab switching bug fix
+    console.log('Running Biz Location Finder v2.1.4');
   
   // -----------------------
   // Data
@@ -95,7 +95,7 @@
     
     tabs.forEach((tab, index) => {
       // Check if panel already exists in this container
-      let panel = container.querySelector(`#${tab.id}`);
+      let panel = container.querySelector(`#${container.id}-${tab.id}`);
       if (!panel) {
         console.log(`Creating missing panel for: ${tab.key}`);
         
@@ -501,24 +501,29 @@
       li.addEventListener('click', () => {
         const target = li.getAttribute('data-tab');
         const containerId = li.getAttribute('data-container');
+        
         if (!target || !containerId) return;
 
-        // Only affect tabs within this container
-        navItems.forEach(n => n.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
+        // Remove active class from all nav items and panels in this container
+        container.querySelectorAll('.tab-nav li').forEach(n => n.classList.remove('active'));
+        container.querySelectorAll('.tab-content').forEach(p => p.classList.remove('active'));
 
+        // Add active class to clicked nav item
         li.classList.add('active');
 
-        const panel = container.querySelector(`[data-tab="${target}"]`);
-        if (!panel) return;
-
-        panel.classList.add('active');
-
-        // Clear search on tab switch and show all cards
-        const input = panel.querySelector('.search-input');
-        if (input) {
-          input.value = '';
-          filterPanel(panel, '');
+        // Find and activate the corresponding panel using ID instead of data-tab
+        const panelId = `${containerId}-${target}`;
+        const panel = document.getElementById(panelId);
+        
+        if (panel) {
+          panel.classList.add('active');
+          
+          // Clear search on tab switch and show all cards
+          const input = panel.querySelector('.search-input');
+          if (input) {
+            input.value = '';
+            filterPanel(panel, '');
+          }
         }
       });
     });
@@ -563,8 +568,12 @@
       
       card.style.display = show ? '' : 'none';
       if (show) visible++;
-      revealCards(panel);
     });
+
+    // Only call revealCards once after filtering is complete
+    if (visible > 0) {
+      revealCards(panel);
+    }
 
     const noResults = panel.querySelector('.no-results');
     if (noResults) noResults.hidden = visible !== 0;
