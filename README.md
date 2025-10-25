@@ -162,13 +162,13 @@ The system adapts to ANY category structure:
 
 ### **System Information**
 
-**Current Version**: v2.1.3 (October 2025)
+**Current Version**: v2.1.4 (October 2025)
 
 **Component Versions:**
-- Frontend: stockists.js v2.1.3
-- Backend: biz-location-finder.php v2.1.3
-- Admin Interface: v2.1.3 (Database CRUD)
-- Styles: SASS/CSS v2.1.3 (Optimized)
+- Frontend: stockists.js v2.1.4
+- Backend: biz-location-finder.php v2.1.4
+- Admin Interface: v2.1.4 (Database CRUD)
+- Styles: SASS/CSS v2.1.4 (Optimized)
 
 ### **Architecture**
 
@@ -194,25 +194,40 @@ The system adapts to ANY category structure:
 
 ```
 business-location-finder/
-├── biz-location-finder.php      # Main plugin file
+├── biz-location-finder.php      # Main plugin file (v2.1.3)
+├── README.md                    # Main documentation
+├── VERSION_HISTORY.md           # Detailed version changelog
+├── BUILD.md                     # Developer build documentation
+├── SASS-ARCHITECTURE.md         # SASS development guide
+├── HOW-TO-CHANGE-SHEET-URL.md   # Quick setup guide
 ├── assets/
-│   ├── css/style.css           # Compiled styles
-│   └── js/stockists.js         # Frontend JavaScript
-├── templates/
-│   └── finder.php              # Shortcode template
+│   ├── css/                     # Compiled stylesheets
+│   │   ├── style.css           # Main frontend styles
+│   │   ├── style.min.css       # Minified frontend styles
+│   │   ├── admin-styles.css    # Admin interface styles
+│   │   ├── admin-styles.min.css # Minified admin styles
+│   │   └── *.css.map           # Source maps for debugging
+│   ├── js/
+│   │   └── stockists.js        # Frontend JavaScript (v2.1.3)
+│   └── sass/                   # SASS source files
+│       ├── style.sass          # Main frontend SASS
+│       ├── admin-styles.sass   # Main admin SASS
+│       ├── _colors.sass        # Centralized color system
+│       ├── _cards.sass         # Business card styling
+│       ├── _counters.sass      # Badge counter styling
+│       ├── _fonts.sass         # Typography definitions
+│       ├── _search.sass        # Search input styling
+│       ├── _tab-Nav.sass       # Tab navigation styling
+│       ├── _tabs-content.sass  # Tab panel styling
+│       ├── _admin-styles-color-scheme.sass # Admin color scheme
+│       ├── _import-page.sass   # Import page structure
+│       └── _import-page-color-scheme.sass  # Import page colors
 ├── admin/
-│   ├── admin-page.php          # Settings page
-│   └── import-page.php         # Future CSV import
-├── sass/                       # SASS source files
-│   ├── style.sass             # Main SASS
-│   ├── _cards.sass            # Card styling
-│   ├── _colors.sass           # Color variables
-│   ├── _counters.sass         # Badge styling
-│   ├── _fonts.sass            # Typography
-│   ├── _search.sass           # Search input
-│   ├── _tab-Nav.sass          # Tab navigation
-│   └── _tabs-content.sass     # Tab panels
-└── HOW-TO-CHANGE-SHEET-URL.md  # Setup guide
+│   ├── admin-page.php          # Main settings page
+│   └── import-page.php         # Data import/management page
+├── templates/
+│   └── finder.php              # Shortcode output template
+└── dist/                       # Production build artifacts
 ```
 
 ### **Dependencies**
@@ -242,92 +257,20 @@ business-location-finder/
 
 ## Version History
 
-### v2.1.3 (Current)
-**Critical Bug Fix - Edit Business Modal**
-- **Bug Fix**: Fixed modal display issue in WordPress admin interface for editing business records
-- **CSS Fix**: Added global modal styles with !important declarations to override WordPress admin CSS
-- **JavaScript Fix**: Corrected table cell mapping in loadBusinessData function to match 6-column table structure
-- **Modal Enhancement**: Improved modal backdrop, positioning, and form sections for better user experience
-- **Debugging**: Added comprehensive console logging for troubleshooting modal and edit functionality
-- **Production Deployment**: Created production-005 build with complete modal functionality
+See [VERSION_HISTORY.md](VERSION_HISTORY.md) for detailed version information and changelog.
 
-### v2.1.2 (Previous)
-**SASS Architecture Optimization & Production Deployment**
-- **Major**: Complete SASS architecture restructure for maintainable development
-- **Build System**: Optimized CSS output with two-file structure (`style.min.css` + `admin-styles.min.css`)
-- **Modularity**: Separated structure from color schemes with logical file organization
-- **Performance**: Eliminated inline admin styles, moved to organized SASS partials
-- **Maintainability**: Created centralized color system with reusable mixins and functions
-- **File Structure**: 
-  - `admin-styles.sass` - Root admin stylesheet with proper imports
-  - `_admin-styles-color-scheme.sass` - Admin settings page colors + shared components
-  - `_import-page.sass` - Import page structure-only styling
-  - `_import-page-color-scheme.sass` - Import page specific color scheme
-  - `_colors.sass` - Centralized color system for entire plugin
-- **Developer Experience**: Clear separation of concerns, easy color customization, efficient CSS compilation
-- **Production Ready**: Minified CSS files optimized for deployment with source maps
+**Current Version**: v2.1.4 (October 2025)
 
-### v2.1.1 (Previous)
-**Empty Database Handling & Version Consistency**
-- **Fix**: Corrected version numbers across all files to maintain consistency
-- **Enhancement**: Improved empty database handling with user-friendly messaging
-- **Enhancement**: Backend now returns success (200) instead of 404 for empty database
-- **Enhancement**: Frontend shows "No businesses found" message instead of HTTP error
-- **UI**: Added styled `.blf-no-businesses` component for better empty state display
-- **UX**: Provides clear guidance to users on how to add businesses when database is empty
+### Recent Updates
+- **v2.1.4**: Frontend tab switching functionality bug fix
+- **v2.1.3**: Critical bug fix for edit business modal display
+- **v2.1.2**: SASS architecture optimization and production deployment
+- **v2.1.1**: Empty database handling improvements
+- **v2.1.0**: Database implementation with admin interface
 
-### v2.1.0 (Previous)
-**Database Implementation & Admin Interface**
-- **Major**: Added complete MySQL database support with dual data source architecture
-- **Feature**: Implemented CRUD operations for business records (Create, Read, Update, Delete)
-- **Feature**: Built comprehensive admin interface with modal edit forms
-- **Feature**: Added AJAX handlers for secure database operations with nonce verification
-- **Enhancement**: Unified data source switching between Google Sheets and database
-- **Enhancement**: Added description column display in admin business listings
-- **Enhancement**: Improved security with capability checks for admin operations
-- **Build System**: Created automated production build scripts with version extraction
-- **Documentation**: Separated user (README.md) and developer (BUILD.md) documentation
+---
 
-#### **v2.0.3** (October 2025) - **Previous Release**
-- ✨ **New View Mode**: Added `view="data"` parameter for tab-free display mode
-- 🎯 **Flexible Layout**: Choose between full tabbed interface or clean data-only view
-- 🔧 **Multi-Container Support**: Perfect support for multiple shortcodes on same page with unique IDs
-- ✅ **Enhanced Shortcode Options**: Complete parameter combinations working flawlessly
-- 🛠️ **Improved JavaScript**: Robust container isolation and error handling
-
-#### **v2.0.2** (October 2025) - **Previous Release**
-- ✨ **Enhanced Search**: Added business name search functionality - users can now search by both business name and suburb
-- 🎯 **Improved UX**: Updated search placeholder to "Search by business name or suburb…" for better user guidance
-- 🔧 **Dynamic Categories**: Automatically builds category tabs from CSV data when no specific categories are provided
-- ✅ **Better Error Messages**: More intuitive "no matches found" messaging
-- 🛠️ **Category Filtering Fix**: Simplified case-insensitive exact matching for shortcode categories
-
-#### **v2.0.1** (October 2025) - **Previous Release**
-- ✨ **Enhanced Search**: Added business name search functionality - users can now search by both business name and suburb
-- 🎯 **Improved UX**: Updated search placeholder to "Search by business name or suburb…" for better user guidance
-- 🔧 **Dynamic Categories**: Automatically builds category tabs from CSV data when no specific categories are provided
-- ✅ **Better Error Messages**: More intuitive "no matches found" messaging
-
-#### **v2.0.1** (October 2025) - **Previous Release**
-- 🐛 **CSV Parsing Bug Fixed**: Resolved HTML entity double-encoding and escaped quote issues
-- ✅ **Clean Data Display**: Business names and addresses now display without extra backslashes or `&amp;amp;` entities
-- ✅ **Improved Google Maps Links**: URLs are properly encoded without double-escaping
-- ✅ **Enhanced Debugging**: Added comprehensive logging for CSV processing pipeline
-
-#### **v2.0.0** (October 2025) - **Previous Release**
-- ✅ **Flexible Categories**: Works with any category names
-- ✅ **Dynamic Tab Generation**: Auto-builds interface from data
-- ✅ **Admin Settings**: WordPress admin interface for configuration
-- ✅ **Enhanced Security**: Enterprise-level protection
-- ✅ **Backwards Compatibility**: Existing data continues working
-
-#### **v1.0.0** (October 2025) - **Previous Stable**
-- Google Sheets integration
-- Hardcoded category system
-- Basic WordPress plugin structure
-- CSV parsing and rendering
-
-### **REST API Endpoints**
+## **REST API Endpoints**
 
 ```
 GET /wp-json/jq-stockists/v1/get-csv
