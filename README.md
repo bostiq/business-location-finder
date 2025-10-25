@@ -162,13 +162,13 @@ The system adapts to ANY category structure:
 
 ### **System Information**
 
-**Current Version**: v2.1.4 (October 2025)
+**Current Version**: v2.1.5 (October 2025)
 
 **Component Versions:**
-- Frontend: stockists.js v2.1.4
-- Backend: biz-location-finder.php v2.1.4
-- Admin Interface: v2.1.4 (Database CRUD)
-- Styles: SASS/CSS v2.1.4 (Optimized)
+- Frontend: stockists.js v2.1.5
+- Backend: biz-location-finder.php v2.1.5
+- Admin Interface: v2.1.5 (Database CRUD)
+- Styles: SASS/CSS v2.1.5 (Optimized)
 
 ### **Architecture**
 
@@ -259,9 +259,10 @@ business-location-finder/
 
 See [VERSION_HISTORY.md](VERSION_HISTORY.md) for detailed version information and changelog.
 
-**Current Version**: v2.1.4 (October 2025)
+**Current Version**: v2.1.5 (October 2025)
 
 ### Recent Updates
+- **v2.1.5**: Instagram field conditional rendering fix
 - **v2.1.4**: Frontend tab switching functionality bug fix
 - **v2.1.3**: Critical bug fix for edit business modal display
 - **v2.1.2**: SASS architecture optimization and production deployment
