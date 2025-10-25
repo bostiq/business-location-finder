@@ -1,0 +1,218 @@
+@use 'sass:color'
+@use 'colors' as *
+
+// ============================================
+// ADMIN SETTINGS PAGE COLOR SCHEME
+// ============================================
+
+// Mixins for consistent color application
+@mixin admin-card-style($bg-color, $border-color, $text-color: $admin-text-dark)
+  background: $bg-color
+  border-left: 4px solid $border-color
+  color: $text-color
+
+@mixin admin-button-style($bg-color, $hover-adjustment: -5%)
+  background: $bg-color
+  border-color: color.adjust($bg-color, $lightness: -10%)
+  color: $white
+  
+  &:hover
+    background: color.adjust($bg-color, $lightness: $hover-adjustment)
+
+@mixin admin-notice-style($base-color, $alpha-adjustment: -0.9)
+  background: color.adjust($base-color, $alpha: $alpha-adjustment)
+  border-left: 4px solid $base-color
+  color: color.adjust($base-color, $lightness: -20%)
+
+// ============================================
+// ADMIN SETTINGS PAGE COLORS
+// ============================================
+
+.biz-location-finder-admin
+
+  // Plugin version display
+  .blf-version
+    color: $admin-text-muted
+
+  // Google Sheets mode indicator (settings page)
+  .blf-sheets-mode-indicator
+    @include admin-card-style($admin-orange-light, $admin-orange)
+
+  // Database management section (settings page)
+  .blf-database-management
+    @include admin-card-style($admin-blue-light, $admin-blue)
+    
+    p.description
+      color: $admin-text-muted
+
+  // Save button styling (shared)
+  .blf-set-save
+    border-bottom: 1px solid $admin-border
+
+  // Main configuration card (settings page)
+  .blf-config-card
+    @include admin-card-style($admin-card-bg, $admin-blue)
+    
+  // Configuration content (settings page)
+  .blf-config-content
+    h3
+      color: $admin-text-dark
+      
+  // Data source selection (settings page)
+  .blf-data-source-options
+    .blf-source-option
+      border: 2px solid $admin-border
+      background: $admin-card-bg
+      transition: all $transition-speed
+      
+      &.selected
+        background: $admin-blue-light
+        border-color: $admin-blue
+        
+      small
+        color: $admin-text-muted
+        
+  // Google Sheets URL configuration (settings page)
+  .blf-sheets-config
+    background: $admin-orange-light
+    
+  // Detailed Google Sheets configuration (settings page)
+  .blf-sheets-detailed-config
+    @include admin-card-style($admin-blue-light, $admin-blue)
+    
+    h4
+      color: $admin-text-dark
+      
+    .blf-url-format-warning
+      background: color.adjust($admin-red, $alpha: -0.9)
+      border-left: 3px solid $admin-red
+      
+      code
+        background: color.adjust($admin-red, $alpha: -0.8)
+        
+    .blf-csv-format-info
+      background: $admin-card-bg
+      border: 1px solid $admin-border
+      
+      h5
+        color: $admin-text-dark
+      
+  // Dashboard info boxes (settings page)
+  .blf-dashboard-info
+    .blf-info-box
+      &.blue
+        background: $admin-blue-light
+        
+      &.orange
+        background: $admin-orange-light
+        
+      &.green
+        background: $admin-green-light
+        
+  // Google Sheets message card (settings page)
+  .blf-sheets-message-card
+    @include admin-card-style($admin-orange-light, $admin-orange)
+      
+  // Database list styling (settings page)
+  .blf-database-list
+    background: $admin-blue-light
+
+  // ============================================
+  // SHARED ADMIN COMPONENT COLORS
+  // ============================================
+    
+  // Form styling (shared)
+  .blf-form
+    label
+      color: $admin-text-dark
+        
+    input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea
+      border: 1px solid $admin-border
+      
+      &:focus
+        border-color: $admin-blue
+        outline: none
+        box-shadow: 0 0 0 1px $admin-blue
+        
+    .description
+      color: $admin-text-muted
+    
+    .blf-form-section
+      background: color.adjust($admin-card-bg, $lightness: -2%)
+      border-left: 3px solid $admin-blue
+      
+      h3
+        color: $admin-text-dark
+        border-bottom: 1px solid $admin-border
+        
+    .blf-required
+      color: $admin-red
+      
+    .blf-field-description
+      color: $admin-text-muted
+      
+  // Button styling (shared)
+  .blf-button
+    &.primary
+      @include admin-button-style($admin-blue)
+      
+    &.secondary
+      @include admin-button-style($admin-orange)
+        
+  // Status indicators (shared)
+  .blf-status
+    &.active
+      background: color.adjust($admin-green, $alpha: -0.8)
+      color: $admin-green
+      
+    &.inactive
+      background: color.adjust($admin-red, $alpha: -0.8)
+      color: $admin-red
+      
+  // Success/Error messages (shared)
+  .blf-notice
+    &.success
+      @include admin-notice-style($admin-green)
+      
+    &.error
+      @include admin-notice-style($admin-red)
+      
+    &.info
+      @include admin-notice-style($admin-blue)
+      
+  // Data table styling (shared)
+  .blf-data-table
+    th, td
+      border-bottom: 1px solid $admin-border
+      
+    th
+      background: $admin-background
+      color: $admin-text-dark
+      
+    tr:hover
+      background: color.adjust($admin-background, $lightness: 2%)
+      
+    .blf-actions
+      a, button, .button
+        &.edit
+          color: $admin-blue
+          
+        &.delete
+          color: $admin-red
+
+  // Modal styling (shared)
+  #blf-edit-modal
+    background-color: rgba($black, 0.5)
+    
+    .blf-modal-content
+      background-color: $admin-card-bg
+      
+      h2
+        color: $admin-text-dark
+        
+    .blf-modal-close
+      color: $admin-text-muted
+      
+      &:hover,
+      &:focus
+        color: $admin-text-dark

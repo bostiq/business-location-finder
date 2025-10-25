@@ -1,0 +1,111 @@
+@use 'sass:color'
+@use 'colors' as *
+
+// ============================================
+// IMPORT PAGE COLOR SCHEME
+// ============================================
+
+// Mixins for import page specific styling
+@mixin data-source-indicator($bg-color, $text-color, $icon-color)
+  background-color: $bg-color
+  border-left: 4px solid $icon-color
+  color: $text-color
+  
+  .data-source-icon
+    color: $icon-color
+
+@mixin form-section-style($bg-color, $border-color)
+  background: $bg-color
+  border-left: 3px solid $border-color
+  border-radius: 5px
+
+// Import page color scheme
+.biz-location-finder-admin
+
+  // Data source status indicators
+  .blf-data-source-status
+    &.sheets-mode
+      @include data-source-indicator($import-sheets-bg, $admin-text-dark, $import-sheets-primary)
+      
+    &.database-mode
+      @include data-source-indicator($import-database-bg, $admin-text-dark, $import-database-primary)
+
+  // Import page specific sections
+  .blf-import-section
+    .blf-sheets-config
+      background: $import-sheets-bg
+      border: 1px solid $import-sheets-primary
+      
+    .blf-database-section
+      background: $import-database-bg
+      border: 1px solid $import-database-primary
+
+  // Form sections with import page colors
+  .blf-import-form
+    .blf-form-section
+      @include form-section-style($import-form-bg, $import-database-primary)
+      
+      h3
+        color: $admin-text-dark
+        border-bottom: 1px solid $admin-border
+      
+    .blf-required
+      color: $import-required
+      
+    input, textarea, select
+      border: 1px solid $admin-border
+      
+      &:focus
+        border-color: $import-database-primary
+        box-shadow: 0 0 0 1px $import-database-primary
+
+  // Import data table styling
+  .blf-import-table
+    th
+      background: $import-form-bg
+      color: $admin-text-dark
+      border-bottom: 2px solid $admin-border
+      
+    td
+      border-bottom: 1px solid $admin-border
+      
+    tr:hover
+      background: $import-table-hover
+      
+    .contact-info
+      a
+        color: $admin-blue
+        
+        &:hover
+          color: color.adjust($admin-blue, $lightness: -10%)
+
+  // Status messages for import page
+  .blf-import-notice
+    &.success
+      background: color.adjust($import-success, $alpha: -0.9)
+      border-left: 4px solid $import-success
+      color: color.adjust($import-success, $lightness: -20%)
+      
+    &.warning
+      background: color.adjust($import-warning, $alpha: -0.9)
+      border-left: 4px solid $import-warning
+      color: color.adjust($import-warning, $lightness: -20%)
+      
+    &.error
+      background: color.adjust($admin-red, $alpha: -0.9)
+      border-left: 4px solid $admin-red
+      color: color.adjust($admin-red, $lightness: -20%)
+
+  // Future features section
+  .blf-future-features
+    background: color.adjust($admin-blue, $alpha: -0.95)
+    border: 1px solid color.adjust($admin-blue, $alpha: -0.7)
+    
+    h2, h3
+      color: $admin-blue
+      
+    ul li
+      color: $admin-text-dark
+      
+      strong
+        color: $admin-blue
