@@ -2,7 +2,16 @@
 
 ## Version History
 
-### v2.1.4 (Current)
+### v2.1.5 (Current)
+**Instagram Field Conditional Rendering Fix**
+- **Bug Fix**: Fixed Instagram link rendering when no Instagram handle is provided for businesses
+- **Frontend Fix**: Instagram section now properly hides when empty instead of showing broken/empty links
+- **Conditional Logic**: Added proper conditional rendering to match other contact fields (website, phone, email)
+- **User Experience**: Cleaner business cards with no confusing empty social media links
+- **Code Consistency**: Instagram field now follows the same pattern as other optional contact fields
+- **JavaScript Enhancement**: Updated renderCards function in stockists.js with proper field validation
+
+### v2.1.4 (Previous)
 **Frontend Tab Switching Bug Fix**
 - **Bug Fix**: Fixed critical tab switching functionality where content would disappear when clicking category tabs
 - **JavaScript Fix**: Corrected panel selection logic in setupTabs function using direct ID lookup instead of data attribute queries

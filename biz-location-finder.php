@@ -6,7 +6,7 @@
  * Description: A dynamic, interactive business location finder
  * with tabbed interface, search functionality, and shortcode support.
  * 
- * Version: 2.1.4
+ * Version: 2.1.5
  * Author: Lorenzo Colen
  * Author URI: https://indexwebmedia.com/
  * License: GPL v2 or later
@@ -24,7 +24,7 @@
  * @author    Lorenzo Colen <info@indexwebmedia.com>
  * @copyright 2025 Index Web Media
  * @license   GPL-2.0-or-later <https://www.gnu.org/licenses/gpl-2.0.html>
- * @CVN       2.1.4
+ * @CVN       2.1.5
  * @link      https://indexwebmedia.com/
  * @tag       WordPress, plugin, business directory, location finder, shortcode
  * @since     1.0.0
@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
 /* Define plugin constants */
 define('BLF_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('BLF_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('BLF_VERSION', '2.1.4');
+define('BLF_VERSION', '2.1.5');
 
 /**
  * Main Plugin Class

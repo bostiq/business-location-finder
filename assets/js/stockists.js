@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.1.4 - Frontend tab switching bug fix
-    console.log('Running Biz Location Finder v2.1.4');
+    // Biz Location Finder v2.1.5 - Instagram field conditional rendering fix
+    console.log('Running Biz Location Finder v2.1.5');
   
   // -----------------------
   // Data
@@ -445,7 +445,13 @@
         card.querySelector('.biz-name-container').appendChild(nameElement);
         card.querySelector('.biz-suburb-container').appendChild(suburbElement);
         card.querySelector('.biz-address').appendChild(addressLink);
-        card.querySelector('.biz-instagram').appendChild(igLink);
+        
+        // Add Instagram link if data exists
+        if (b.instagram && b.instagram.trim()) {
+          card.querySelector('.biz-instagram').appendChild(igLink);
+        } else {
+          card.querySelector('.biz-instagram').style.display = 'none';
+        }
         
         // Add new fields if they exist
         if (b.website && b.website.trim()) {
