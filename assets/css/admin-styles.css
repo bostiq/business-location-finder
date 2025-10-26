@@ -166,6 +166,7 @@
 }
 .biz-location-finder-admin #blf-edit-modal {
   background-color: rgba(0, 0, 0, 0.5);
+  /*! HERE ============================================ */
 }
 .biz-location-finder-admin #blf-edit-modal .blf-modal-content {
   background-color: #ffffff;
@@ -517,13 +518,14 @@
 }
 
 #blf-edit-modal {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  /*! HERE ============================================ */
 }
 #blf-edit-modal .blf-modal-content {
   background-color: #ffffff;
   border-color: #ddd;
-  -webkit-box-shadow: 0 4px 6px black;
-          box-shadow: 0 4px 6px black;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
 }
 #blf-edit-modal .blf-modal-close {
   color: #666666;
