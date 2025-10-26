@@ -20,6 +20,11 @@
       'envelope': '<path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/>',
       'globe-alt': '<path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>',
       'camera': '<path d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"/><path fill-rule="evenodd" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008Z" clip-rule="evenodd"/>',
+
+      'facebook':'<g transform="translate(1.5,1.5) scale(1.23)"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></g>',
+
+      'instagram':'<g transform="translate(2.5,4) scale(1.23)"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></g>',
+
       
       'arrow-top-right-on-square': '<path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75H15.75a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>',
 
@@ -398,10 +403,10 @@
         card.dataset.name = (b.name || '').toLowerCase(); // Add business name for searching
 
         const mapsHref = googleMapsLink(b.name, b.suburb);
-        const igHandle = (b.instagram || '').replace(/^@/, '');
+        const igHandle = (b.instagram || '').toLowerCase();
         const igHref = igHandle ? `https://instagram.com/${encodeURIComponent(igHandle)}` : '#';
 
-        const fbHandle = (b.facebook || '').replace(/^@/, '');
+        const fbHandle = (b.facebook || '').toLowerCase();
         const fbHref = fbHandle ? `https://facebook.com/${encodeURIComponent(fbHandle)}` : '#';
 
         // Create text nodes to avoid HTML entity double encoding
@@ -417,21 +422,24 @@
         addressLink.href = mapsHref;
         addressLink.target = '_blank';
         addressLink.rel = 'noopener';
+        addressLink.title = b.address ? `View ${b.name} on Google Maps` : 'View on Google Maps';
         addressLink.innerHTML = `${heroicon('map-pin', 'contact-icon', '16')} ${b.address || ''}`;
-        
+            
         // Create Instagram link
         const igLink = document.createElement('a');
         igLink.href = igHref;
         igLink.target = '_blank';
         igLink.rel = 'noopener';
-        igLink.innerHTML = `${heroicon('camera', 'contact-icon', '16')} @${igHandle}`;
-        
+        igLink.title = igHandle ? `View ${b.name} on Instagram (@${igHandle})` : 'Instagram';
+        igLink.innerHTML = `${heroicon('instagram', 'contact-icon', '20')} ${igHandle}`;
+            
         // Create Facebook link
         const fbLink = document.createElement('a');
         fbLink.href = fbHref;
         fbLink.target = '_blank';
         fbLink.rel = 'noopener';
-        fbLink.innerHTML = `${heroicon('users', 'contact-icon', '16')} @${fbHandle}`;
+        fbLink.title = fbHandle ? `View ${b.name} on Facebook (@${fbHandle})` : 'Facebook';
+        fbLink.innerHTML = `${heroicon('users', 'contact-icon', '20')} ${fbHandle}`;
         
         // const fbRaw = (b.facebook || '').trim();
         // if (fbRaw) {
@@ -443,11 +451,13 @@
         // }
 
         // Create website link if available
+
         const websiteLink = document.createElement('a');
         if (b.website && b.website.trim()) {
           websiteLink.href = b.website.startsWith('http') ? b.website : `https://${b.website}`;
           websiteLink.target = '_blank';
           websiteLink.rel = 'noopener';
+          websiteLink.title = `Visit ${b.name} website`;
           websiteLink.innerHTML = `${heroicon('arrow-top-right-on-square', 'contact-icon', '16')} Visit Website`;
           websiteLink.className = 'biz-website';
         }
@@ -456,6 +466,7 @@
         const phoneLink = document.createElement('a');
         if (b.phone && b.phone.trim()) {
           phoneLink.href = `tel:${b.phone.replace(/\s/g, '')}`;
+          phoneLink.title = `Call ${b.name}`;
           phoneLink.innerHTML = `${heroicon('phone', 'contact-icon', '16')} ${b.phone}`;
           phoneLink.className = 'biz-phone';
         }
@@ -464,6 +475,7 @@
         const emailLink = document.createElement('a');
         if (b.email && b.email.trim()) {
           emailLink.href = `mailto:${b.email}`;
+          emailLink.title = `Email ${b.name}`;
           emailLink.innerHTML = `${heroicon('envelope', 'contact-icon', '16')} ${b.email}`;
           emailLink.className = 'biz-email';
         }
