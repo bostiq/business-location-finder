@@ -282,7 +282,7 @@ class BizLocationFinder {
         }
         
         /* Get Google Sheets URL from WordPress options (configurable in admin) */
-        $default_url = 'https://docs.google.com/spreadsheets/d/1A8W-_GwPfCWbkqzyvSRKNC2x6bTzDCwBNS24tNuKCt8/export?format=csv&gid=1952886414';
+        $default_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTp7ka2BJoFXGG81bBev0gUF5HOnv-mA8umBcA219W2tTrXCFrBjIWuMaZTT64cUdny2FuibopMCrXz/pub?output=csv';
         $google_sheets_url = get_option('blf_google_sheets_url', $default_url);
         
         /* If no URL is set, return error */

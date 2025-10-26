@@ -96,7 +96,7 @@ if (isset($_POST['delete_business']) && check_admin_referer('blf_delete_business
 }
 
 /* Get current Google Sheets URL */
-$current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spreadsheets/d/1A8W-_GwPfCWbkqzyvSRKNC2x6bTzDCwBNS24tNuKCt8/export?format=csv&gid=1952886414');
+$current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTp7ka2BJoFXGG81bBev0gUF5HOnv-mA8umBcA219W2tTrXCFrBjIWuMaZTT64cUdny2FuibopMCrXz/pub?output=csv');
 ?>
 
 <div class="wrap biz-location-finder-admin">
@@ -150,8 +150,8 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                             6. Paste the URL here<br>
                             <br>
                             <strong style="color: #d63638;"><?php echo blf_heroicon('exclamation-triangle', '', '16'); ?> IMPORTANT:</strong> Make sure your URL looks like:<br>
-                            <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=SHEET_GID</code><br>
-                            <strong>NOT</strong> like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit...</code>
+                            <code>https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv</code>
+                            <strong>NOT</strong> like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=SHEET_GID</code>
                         </p>
                     </td>
                 </tr>

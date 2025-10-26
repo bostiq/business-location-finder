@@ -19,7 +19,7 @@ $database_businesses = $blf_plugin->get_businesses();
 $business_count = count($database_businesses);
 
 /* Get current Google Sheets URL */
-$current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spreadsheets/d/1A8W-_GwPfCWbkqzyvSRKNC2x6bTzDCwBNS24tNuKCt8/export?format=csv&gid=1952886414');
+$current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTp7ka2BJoFXGG81bBev0gUF5HOnv-mA8umBcA219W2tTrXCFrBjIWuMaZTT64cUdny2FuibopMCrXz/pub?output=csv');
 ?>
 
 <div class="wrap biz-location-finder-admin">
@@ -101,8 +101,8 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                             
                             <div class="blf-url-format-warning">
                                 <p><strong style="color: #d63638;"><?php echo blf_heroicon('exclamation-triangle', 'warning-icon'); ?> IMPORTANT:</strong> Make sure your URL looks like:</p>
-                                <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=SHEET_GID</code>
-                                <p><strong>NOT</strong> like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit...</code></p>
+                                <code>https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv</code>
+                                <p><strong>NOT</strong> like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=SHEET_GID</code></p>
                             </div>
                             
                             <div class="blf-csv-format-info">
