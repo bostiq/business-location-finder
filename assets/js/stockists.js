@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.1.6 - Heroicons SVG implementation
-    console.log('Running Biz Location Finder v2.1.6');
+    // Biz Location Finder v2.1.6.2 - Heroicons SVG implementation
+    console.log('Running Biz Location Finder v2.1.6.2');
   
   // -----------------------
   // Data
@@ -20,7 +20,10 @@
       'envelope': '<path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/>',
       'globe-alt': '<path d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>',
       'camera': '<path d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"/><path fill-rule="evenodd" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5a.75.75 0 0 0 0 1.5h.008a.75.75 0 0 0 0-1.5h-.008Z" clip-rule="evenodd"/>',
-      'arrow-top-right-on-square': '<path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75H15.75a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>'
+      
+      'arrow-top-right-on-square': '<path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75H15.75a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>',
+
+      'users': '<path fill-rule="evenodd" d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" clip-rule="evenodd"/>'
     };
     
     if (!icons[name]) {
@@ -269,7 +272,12 @@
   function parseCSVWithLines(lines) {
     // Parse headers - the first line should be split properly
     console.log('Raw header line:', JSON.stringify(lines[0]));
-    const headers = parseCSVLine(lines[0]);
+    // const headers = parseCSVLine(lines[0]);
+
+    // Parse headers - the first line should be split properly
+    const rawHeaders = parseCSVLine(lines[0]);
+    const headers = rawHeaders.map(h => h.trim().toLowerCase());
+    // console.log('FB value for', b.name, '->', JSON.stringify(b.facebook));
     console.log('CSV Headers:', headers);
     
     // Validate that headers were parsed correctly
@@ -282,40 +290,37 @@
         headers.splice(0, headers.length, ...manualHeaders);
       }
     }
+    // Parse data lines
+     const data = lines.slice(1).map((line, lineIndex) => {
+    // Skip empty lines
+    if (line.trim() === '') return null;
+      
+    const values = parseCSVLine(line);
+      
+    // Ensure values array has same length as headers (pad with empty strings)
+    if (values.length < headers.length) {
+      while (values.length < headers.length) values.push('');
+    } else if (values.length > headers.length) {
+      // If there are extra values, join the extras into the last field (defensive)
+      const extras = values.slice(headers.length - 1).join(',');
+      values.splice(headers.length - 1, values.length - (headers.length - 1), extras);
+    }
+  
+    const obj = {};
+    headers.forEach((header, index) => {
+      const rawValue = values[index] || '';
+      let decodedValue = decodeHTMLEntities(rawValue);
     
-    const data = lines.slice(1).map((line, lineIndex) => {
-      // Skip empty lines
-      if (line.trim() === '') {
-        return null;
+      if (header === 'category') {
+        decodedValue = decodedValue.replace(/^["'`]+|["'`]+$/g, '').trim();
       }
-
-      console.log(`Parsing line ${lineIndex + 1}:`, JSON.stringify(line));
-      const values = parseCSVLine(line);
-      console.log(`Parsed values for line ${lineIndex + 1}:`, values);
-      
-      // Create object from headers and values
-      const obj = {};
-      headers.forEach((header, index) => {
-        const rawValue = values[index] || '';
-        let decodedValue = decodeHTMLEntities(rawValue);
-        
-        // Clean up category values - remove extra quotes that might be in the data
-        if (header === 'category') {
-          decodedValue = decodedValue.replace(/^["'`]+|["'`]+$/g, '').trim();
-          console.log(`Category cleaned: "${rawValue}" -> "${decodedValue}"`);
-        }
-        
-        console.log(`Field "${header}": "${rawValue}" -> "${decodedValue}"`);
-        obj[header] = decodedValue;
-      });
-      
-      // Debug first few rows
-      if (lineIndex < 3) {
-        console.log(`Row ${lineIndex + 1} final object:`, obj);
-      }
-      
-      return obj;
-    }).filter(Boolean); // Filter out any null (empty) lines
+    
+      obj[header] = decodedValue;
+    });
+  
+    if (lineIndex < 3) console.log(`Row ${lineIndex + 1} final object:`, obj);
+    return obj;
+  }).filter(Boolean);
     
     console.log(`Parsed ${data.length} businesses from CSV`);
     return data;
@@ -326,7 +331,7 @@
     const values = [];
     let currentValue = '';
     let insideQuotes = false;
-    
+    // Iterate through each character in the line
     for (let i = 0; i < line.length; i++) {
       const char = line[i];
       const nextChar = line[i + 1];
@@ -351,7 +356,7 @@
     
     return values;
   }
-
+  // Render cards for a specific container and its dynamic tabs
   function renderCards(container, dynamicTabs) {
     console.log(`\n=== RENDERING CARDS for container: ${container.id} ===`);
     console.log('Dynamic tabs to render:', dynamicTabs);
@@ -396,6 +401,9 @@
         const igHandle = (b.instagram || '').replace(/^@/, '');
         const igHref = igHandle ? `https://instagram.com/${encodeURIComponent(igHandle)}` : '#';
 
+        const fbHandle = (b.facebook || '').replace(/^@/, '');
+        const fbHref = fbHandle ? `https://facebook.com/${encodeURIComponent(fbHandle)}` : '#';
+
         // Create text nodes to avoid HTML entity double encoding
         const nameElement = document.createElement('h4');
         nameElement.className = 'biz-name';
@@ -410,12 +418,29 @@
         addressLink.target = '_blank';
         addressLink.rel = 'noopener';
         addressLink.innerHTML = `${heroicon('map-pin', 'contact-icon', '16')} ${b.address || ''}`;
-
+        
+        // Create Instagram link
         const igLink = document.createElement('a');
         igLink.href = igHref;
         igLink.target = '_blank';
         igLink.rel = 'noopener';
         igLink.innerHTML = `${heroicon('camera', 'contact-icon', '16')} @${igHandle}`;
+        
+        // Create Facebook link
+        const fbLink = document.createElement('a');
+        fbLink.href = fbHref;
+        fbLink.target = '_blank';
+        fbLink.rel = 'noopener';
+        fbLink.innerHTML = `${heroicon('users', 'contact-icon', '16')} @${fbHandle}`;
+        
+        // const fbRaw = (b.facebook || '').trim();
+        // if (fbRaw) {
+        //   // build fb link and append
+        //   fbRaw.appendChild(fbLink);
+        //   fbLink.style.display = '';
+        // } else {
+        //   fbLink.style.display = 'none';
+        // }
 
         // Create website link if available
         const websiteLink = document.createElement('a');
@@ -457,6 +482,7 @@
           <p class="biz-address"></p>
           <div class="biz-contact-info">
             <p class="biz-instagram"></p>
+            <p class="biz-facebook"></p>
             <p class="biz-website-container"></p>
             <p class="biz-phone-container"></p>
             <p class="biz-email-container"></p>
@@ -475,7 +501,13 @@
         } else {
           card.querySelector('.biz-instagram').style.display = 'none';
         }
-        
+        // Add Facebook link if data exists
+        if (b.facebook && b.facebook.trim()) {
+          card.querySelector('.biz-facebook').appendChild(fbLink);
+        } else {
+          card.querySelector('.biz-facebook').style.display = 'none';
+        }
+
         // Add new fields if they exist
         if (b.website && b.website.trim()) {
           card.querySelector('.biz-website-container').appendChild(websiteLink);
@@ -617,7 +649,7 @@
       console.error('No .x-stockists containers found on page');
       return;
     }
-    
+    // Process each container individually
     containers.forEach((container, index) => {
       const containerId = container.id || `blf-auto-${index}`;
       console.log(`\n=== Processing container ${index + 1}: ${containerId} ===`);
@@ -638,7 +670,7 @@
       }
     });
   }
-  
+  // Initialize a specific container by ID with its dynamic tabs
   function initializeContainer(containerId, dynamicTabs) {
     const container = document.getElementById(containerId);
     if (!container) {

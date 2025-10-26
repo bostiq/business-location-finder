@@ -56,6 +56,7 @@ if (isset($_POST['add_business']) && check_admin_referer('blf_add_business_nonce
         'suburb' => sanitize_text_field($_POST['business_suburb']),
         'address' => sanitize_textarea_field($_POST['business_address']),
         'instagram' => sanitize_text_field($_POST['business_instagram']),
+        'facebook' => sanitize_text_field($_POST['business_facebook']),
         'website' => esc_url_raw($_POST['business_website']),
         'phone' => sanitize_text_field($_POST['business_phone']),
         'email' => sanitize_email($_POST['business_email']),
@@ -168,6 +169,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                 <li><strong>suburb</strong> - Location suburb</li>
                 <li><strong>address</strong> - Full business address</li>
                 <li><strong>instagram</strong> - Instagram handle (without @)</li>
+                <li><strong>facebook</strong> - Facebook handle (without @)</li>
             </ul>
             <p><em>The system will automatically create tabs based on whatever categories you have in your data!</em></p>
         </div>
@@ -246,9 +248,13 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                     
                     <p>
                         <label for="business_instagram">Instagram Handle</label>
-                        <input type="text" id="business_instagram" name="business_instagram" placeholder="businesshandle" />
+                        <input type="text" id="business_instagram" name="business_instagram" placeholder="business_instagram" />
                         <span class="blf-field-description">Instagram username without the @ symbol</span>
                     </p>
+                    <p>
+                        <label for="business_facebook">Facebook Handle</label>
+                        <input type="text" id="business_facebook" name="business_facebook" placeholder="business_facebook" />
+                        <span class="blf-field-description">Facebook username without the @ symbol</span>
                 </div>
                 
                 <?php submit_button('Add Business', 'primary', 'add_business'); ?>
@@ -307,6 +313,15 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                                     <em>No Instagram</em>
                                 <?php endif; ?>
                             </td>
+                            <td>
+                                <?php if (!empty($business['facebook'])): ?>
+                                    <a href="https://facebook.com/<?php echo esc_attr($business['facebook']); ?>" target="_blank">
+                                        @<?php echo esc_html($business['facebook']); ?>
+                                    </a>
+                                <?php else: ?>
+                                    <em>No Facebook</em>
+                                <?php endif; ?>
+                            </td>
                             <td class="blf-actions">
                                 <button type="button" class="button button-small blf-edit-business" 
                                         data-business-id="<?php echo esc_attr($business['id']); ?>">
@@ -355,6 +370,7 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                     <th>suburb</th>
                     <th>address</th>
                     <th>instagram</th>
+                    <th>facebook</th>
                 </tr>
             </thead>
             <tbody>
@@ -437,6 +453,11 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                 <p>
                     <label for="edit-business-instagram">Instagram Username</label>
                     <input type="text" id="edit-business-instagram" name="business_instagram" />
+                </p>
+
+                <p>
+                    <label for="edit-business-facebook">Facebook Handle</label>
+                    <input type="text" id="edit-business-facebook" name="business_facebook" placeholder="business_fb" />
                 </p>
             </div>
             
@@ -561,8 +582,19 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('edit-business-instagram').value = instagramHandle;
         } else {
             document.getElementById('edit-business-instagram').value = '';
-        }
-        
+        };
+        // Column 5: Social (Facebook)
+        const facebookCell = cells[5];
+        const facebookLink = facebookCell.querySelector('a');
+        if (facebookLink && facebookLink.textContent.includes('@')) {
+            const facebookHandle = facebookLink.textContent.trim().replace('@', '');
+            document.getElementById('edit-business-facebook').value = facebookHandle;
+            console.log('Facebook handle set to:', facebookHandle);
+        } else {
+            document.getElementById('edit-business-facebook').value = '';
+            console.log('Facebook handle not found');
+        };
+
         console.log('Business data loaded successfully');
     }
     

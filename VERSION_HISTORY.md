@@ -2,7 +2,10 @@
 
 ## Version History
 
-### v2.1.6.1 (Current)
+### v2.1.6.2 (Current)
+- **Data support**: Implemented new Facebook handle support for csv googlehseet data set
+
+### v2.1.6.1 (Previous)
 **Heroicons Solid SVG Implementation - Front-end**
 - **UI Enhancement**: Added icons with Heroicons Solid SVG icons throughout Front-end
 
