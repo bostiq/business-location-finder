@@ -197,8 +197,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="blf-info-box orange">
                 <h4><?php echo blf_heroicon('chart-bar-square', 'section-icon'); ?> Google Sheets</h4>
-                <p><a href="<?php echo esc_url($current_url); ?>" target="_blank">View Current Sheet</a></p>
-                <p><small>External data source, requires internet</small></p>
+                <p><a href="<?php echo esc_url($current_url); ?>" target="_blank">Download Current Sheet</a></p>
+                <p><small>Download the .csv file. External data source, requires internet</small></p>
             </div>
         </div>
         
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <li><?php echo blf_heroicon('arrow-path', 'list-icon'); ?> <strong>Changes appear automatically</strong> on your website</li>
             <li><?php echo blf_heroicon('archive-box', 'list-icon'); ?> <strong>Or switch to "Database Records"</strong> above to manage data locally</li>
         </ul>
-        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary"><?php echo blf_heroicon('arrow-top-right-on-square', '', '16'); ?> Open Google Sheet</a></p>
+        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary"><?php echo blf_heroicon('arrow-top-right-on-square', '', '16'); ?> Download Google Sheet</a></p>
     </div>
     <?php endif; // End of Google Sheets message ?>
 
