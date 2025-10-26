@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <li><?php echo blf_heroicon('arrow-path', 'list-icon'); ?> <strong>Changes appear automatically</strong> on your website</li>
             <li><?php echo blf_heroicon('archive-box', 'list-icon'); ?> <strong>Or switch to "Database Records"</strong> above to manage data locally</li>
         </ul>
-        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary"><?php echo blf_heroicon('arrow-top-right-on-square', '', '16'); ?> Download Google Sheet</a></p>
+        <p><a href="<?php echo esc_url($current_url); ?>" target="_blank" class="button button-secondary"><?php echo blf_heroicon('document-arrow-down', '', '16'); ?> Download Google Sheet</a></p>
     </div>
     <?php endif; // End of Google Sheets message ?>
 

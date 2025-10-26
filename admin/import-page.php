@@ -131,9 +131,11 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
             <?php wp_nonce_field('blf_settings_nonce'); ?>
             <table class="form-table">
                 <tr>
-                    <th scope="row">
+                    <th scope="col">
                         <label for="blf_google_sheets_url">Google Sheets Export URL</label>
                     </th>
+                </tr>
+                <tr>
                     <td>
                         <input type="url" 
                                id="blf_google_sheets_url" 
@@ -155,27 +157,30 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                             <strong>NOT</strong> like: <code>https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=SHEET_GID</code>
                         </p>
                     </td>
+                    <td>
+                        <div class="blf-sheets-config-info">
+                            <h4><?php echo blf_heroicon('clipboard-document-list', 'section-icon'); ?> Required CSV Format:</h4>
+                            <p>Your Google Sheet must have these columns (in any order):</p>
+                            <ul>
+                                <li><strong>name</strong> - Business name</li>
+                                <li><strong>category</strong> - Business category (any category names work!)</li>
+                                <li><strong>suburb</strong> - Location suburb</li>
+                                <li><strong>address</strong> - Full business address</li>
+                                <li><strong>instagram</strong> - Instagram handle (without @)</li>
+                                <li><strong>facebook</strong> - Facebook handle (without @)</li>
+                            </ul>
+                            <p><em>The system will automatically create tabs based on whatever categories you have in your data!</em></p>
+                        </div>
+                        
+                        <p><strong>Current Sheet:</strong> <a href="<?php echo esc_url($current_url); ?>" target="_blank"><?php echo blf_heroicon('document-arrow-down', 'link-icon'); ?> Test Current URL</a></p>
+                    </div>
+                    </td>
                 </tr>
             </table>
             <?php submit_button('Save Google Sheets URL'); ?>
         </form>
         
-        <div class="blf-sheets-config-info">
-            <h4><?php echo blf_heroicon('clipboard-document-list', 'section-icon'); ?> Required CSV Format:</h4>
-            <p>Your Google Sheet must have these columns (in any order):</p>
-            <ul>
-                <li><strong>name</strong> - Business name</li>
-                <li><strong>category</strong> - Business category (any category names work!)</li>
-                <li><strong>suburb</strong> - Location suburb</li>
-                <li><strong>address</strong> - Full business address</li>
-                <li><strong>instagram</strong> - Instagram handle (without @)</li>
-                <li><strong>facebook</strong> - Facebook handle (without @)</li>
-            </ul>
-            <p><em>The system will automatically create tabs based on whatever categories you have in your data!</em></p>
-        </div>
         
-        <p><strong>Current Sheet:</strong> <a href="<?php echo esc_url($current_url); ?>" target="_blank"><?php echo blf_heroicon('arrow-top-right-on-square', 'link-icon'); ?> Test Current URL</a></p>
-    </div>
     <?php endif; ?>
     
     <!-- Database Management (show when Database is selected) -->
@@ -379,7 +384,8 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                     <td>Destinational</td>
                     <td>Adelaide</td>
                     <td>123 Main St, Adelaide SA 5000</td>
-                    <td>businesshandle</td>
+                    <td>ig_businesshandle</td>
+                    <td>fb_businesshandle</td>
                 </tr>
             </tbody>
         </table>
