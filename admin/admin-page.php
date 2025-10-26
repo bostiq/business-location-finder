@@ -107,13 +107,14 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
                             
                             <div class="blf-csv-format-info">
                                 <h5><?php echo blf_heroicon('clipboard-document-list', 'section-icon'); ?> Required CSV Format:</h5>
-                                <p>Your Google Sheet must have these columns (in any order):</p>
+                                <p>Your Google Sheet must have these columns (in this order):</p>
                                 <ul>
                                     <li><strong>name</strong> - Business name</li>
                                     <li><strong>category</strong> - Business category (any category names work!)</li>
                                     <li><strong>suburb</strong> - Location suburb</li>
-                                    <li><strong>address</strong> - Full business address</li>
+                                    <li><strong>address</strong> - Full business address (including suburb)</li>
                                     <li><strong>instagram</strong> - Instagram handle (without @)</li>
+                                    <li><strong>facebook</strong> - Facebook handle (account name, no <code>'http://www.facebook.com/'</code>)</li>
                                 </ul>
                                 <p><em>The system will automatically create tabs based on whatever categories you have in your data!</em></p>
                             </div>
@@ -154,9 +155,15 @@ $current_url = get_option('blf_google_sheets_url', 'https://docs.google.com/spre
             
             <h4>Shortcode Options:</h4>
             <ul>
-                <li><code>[biz_location_finder]</code> - Shows all businesses</li>
+                <li><code>[biz_location_finder]</code> - Shows all businesses, Category tabs with counters, search field.</li>
                 <li><code>[biz_location_finder categories="restaurant,cafe"]</code> - Filter by categories</li>
-                <li><code>[biz_location_finder search="false"]</code> - Disable search</li>
+                <li><code>[biz_location_finder search="false"]</code> - Disable search bar.</li>
+                <li><code>[biz_location_finder counters="false"]</code> - Disable counter badges.</li>
+                <li><code>[biz_location_finder view="data"]</code> - Minimal view with search field and cards only.</li>
+                <li>You can combine multiple options:</li>
+                <li><code>[biz_location_finder categories="restaurant,cafe" search="false"]</code></li>
+                <li>or</li>
+                <li><code>[biz_location_finder view="data" search="false"]</code> for an even more compact view.</li>
             </ul>
         </div>
     </div>
