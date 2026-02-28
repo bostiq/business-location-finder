@@ -2,6 +2,10 @@
 
 /**
  * Admin Page Template - Business Management
+ * 
+ * @package BizLocationFinder
+ * @author  Lorenzo Colen <info@indexwebmedia.com>, AI Assistant
+ * @since   1.0.0
  */
 
 /* Prevent direct access */
