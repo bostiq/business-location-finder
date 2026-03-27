@@ -48,9 +48,9 @@
 
 ## Key Files & References
 - `README.md`: Full documentation, setup, and usage
-- `BUILD.md`: Build/deployment details
-- `SASS-ARCHITECTURE.md`: SASS structure and conventions
-- `HOW-TO-CHANGE-SHEET-URL.md`: Data source setup
+- `Documentation/BUILD.md`: Build/deployment details
+- `Documentation/SASS-ARCHITECTURE.md`: SASS structure and conventions
+- `Documentation/HOW-TO-CHANGE-SHEET-URL.md`: Data source setup
 - `VERSION_HISTORY.md`: Changelog
 
 ## Examples

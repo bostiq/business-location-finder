@@ -162,13 +162,13 @@ The system adapts to ANY category structure:
 
 ### **System Information**
 
-**Current Version**: v2.1.6.2 (October 2025)
+**Current Version**: v2.1.6.3 (March 2026)
 
 **Component Versions:**
-- Frontend: stockists.js v2.1.6.2
-- Backend: biz-location-finder.php v2.1.6.2
-- Admin Interface: v2.1.6.2 (Database CRUD)
-- Styles: SASS/CSS v2.1.6.2 (Optimized)
+- Frontend: stockists.js v2.1.6.3
+- Backend: biz-location-finder.php v2.1.6.3
+- Admin Interface: v2.1.6.3 (Database CRUD)
+- Styles: SASS/CSS v2.1.6.3 (Optimized)
 
 ### **Architecture**
 
@@ -261,10 +261,11 @@ business-location-finder/
 
 See [VERSION_HISTORY.md](VERSION_HISTORY.md) for detailed version information and changelog.
 
-**Current Version**: v2.1.6.2 (October 2025)
+**Current Version**: v2.1.6.3 (March 2026)
 
 ### Recent Updates
-- **v2.1.6.2**: Implemented new Facebook handle support for csv googlehseet data set
+- **v2.1.6.3**: Fixed issue on Safari where plugin wasn't displaying all the data
+- - **v2.1.6.2**: Implemented new Facebook handle support for csv googlehseet data set
 - **v2.1.6.1**: Heroicons Solid SVG implementation on front-end
 - **v2.1.6**: Heroicons Solid SVG implementation replacing emoji icons
 - **v2.1.5**: Instagram field conditional rendering fix

@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.1.6.2 - Heroicons SVG implementation
-    console.log('Running Biz Location Finder v2.1.6.2');
+    // Biz Location Finder v2.1.6.3
+    // console.log('Running Biz Location Finder v2.1.6.3');
   
   // -----------------------
   // Data
@@ -13,6 +13,7 @@
   // -----------------------
   
   // Frontend Heroicons SVG helper function
+  // Heroicons SVG implementation
   function heroicon(name, className = '', size = '20') {
     const icons = {
       'map-pin': '<path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>',
@@ -44,18 +45,11 @@
   }
   
   function buildDynamicTabsForContainer(container, businesses) {
-    console.log('=== DEBUGGING CATEGORY FILTERING ===');
-    console.log('Container:', container);
-    console.log('All businesses:', businesses);
-    console.log('Business categories:', businesses.map(b => b.category));
-    
     // Check if this is data view mode
     const isDataView = container?.getAttribute('data-view') === 'data';
-    console.log('Is data view mode:', isDataView);
     
     // For data view, return a single "All" tab to show all businesses
     if (isDataView) {
-      console.log('Data view mode - returning single tab for all businesses');
       return [{ key: 'All', id: 'all' }];
     }
     
@@ -63,13 +57,8 @@
     const allowedCategories = container?.getAttribute('data-categories');
     let categoriesToShow = null;
     
-    console.log('Container data-categories attribute:', allowedCategories);
-    
     if (allowedCategories) {
       categoriesToShow = allowedCategories.split(',').map(c => c.trim().toLowerCase());
-      console.log('Categories limited by shortcode:', categoriesToShow);
-    } else {
-      console.log('No data-categories attribute found - building tabs from CSV data');
     }
     
     // Get unique categories from the data
@@ -81,9 +70,6 @@
       uniqueCategories = uniqueCategories.filter(category => 
         categoriesToShow.includes(category.toLowerCase())
       );
-      console.log('Shortcode categories requested:', categoriesToShow);
-      console.log('Available categories from data:', [...new Set(businesses.map(b => b.category))]);
-      console.log('Filtered categories (case-insensitive):', uniqueCategories);
     }
     
     // Create slug from category name
@@ -109,7 +95,6 @@
       });
     });
     
-    console.log('Dynamic tabs built:', tabs);
     return tabs;
   }
   
@@ -128,8 +113,6 @@
       // Check if panel already exists in this container
       let panel = container.querySelector(`#${container.id}-${tab.id}`);
       if (!panel) {
-        console.log(`Creating missing panel for: ${tab.key}`);
-        
         // Create new panel with unique ID scoped to this container
         panel = document.createElement('div');
         panel.className = 'tab-content';
@@ -172,8 +155,6 @@
       // Check if nav item already exists in this container
       let navItem = container.querySelector(`.tab-nav li[data-tab="${tab.id}"]`);
       if (!navItem) {
-        console.log(`Creating missing nav item for: ${tab.key}`);
-        
         // Create new nav item
         navItem = document.createElement('li');
         navItem.className = index === 0 ? 'tab-menu-item active' : 'tab-menu-item';
@@ -229,34 +210,17 @@
 }
   // CSV parsing helper function
   function parseCSV(csvText) {
-    // Debug the raw input first
-    console.log('Raw CSV length:', csvText.length);
-    console.log('Raw CSV first 100 chars:', csvText.substring(0, 100));
-    console.log('Contains \\r\\n:', csvText.includes('\r\n'));
-    console.log('Contains \\n:', csvText.includes('\n'));
-    console.log('Contains \\r:', csvText.includes('\r'));
-    console.log('Contains literal \\\\r\\\\n:', csvText.includes('\\r\\n'));
-    
     // Handle escaped line endings first (literal \r\n in the text)
     let normalizedCSV = csvText.replace(/\\r\\n/g, '\n').replace(/\\r/g, '\n');
-    console.log('After escaped line ending replacement:', normalizedCSV.substring(0, 100));
     
     // Then handle actual line endings
     normalizedCSV = normalizedCSV.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
-    console.log('After actual line ending replacement:', normalizedCSV.substring(0, 100));
     
     // Fix escaped quotes that got mangled during line ending replacement
     normalizedCSV = normalizedCSV.replace(/\\"/g, '"');
-    console.log('After quote fixing:', normalizedCSV.substring(0, 100));
     
     // Split into lines
     const lines = normalizedCSV.trim().split('\n');
-    
-    console.log(`CSV split into ${lines.length} lines`);
-    console.log('First line (headers):', lines[0]);
-    if (lines.length > 1) {
-      console.log('Second line (first data):', lines[1]);
-    }
     
     if (lines.length === 0) {
       console.error('CSV file is empty');
@@ -276,83 +240,116 @@
   // Helper function to parse CSV when we have proper lines
   function parseCSVWithLines(lines) {
     // Parse headers - the first line should be split properly
-    console.log('Raw header line:', JSON.stringify(lines[0]));
-    // const headers = parseCSVLine(lines[0]);
-
-    // Parse headers - the first line should be split properly
     const rawHeaders = parseCSVLine(lines[0]);
     const headers = rawHeaders.map(h => h.trim().toLowerCase());
-    // console.log('FB value for', b.name, '->', JSON.stringify(b.facebook));
-    console.log('CSV Headers:', headers);
     
     // Validate that headers were parsed correctly
     if (headers.length === 1 && headers[0].includes(',')) {
-      console.error('Header parsing failed - got one field with commas. Attempting manual split...');
       // Fallback to simple split for headers (assuming no quotes in header row)
-      const manualHeaders = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
-      console.log('Manual header parsing result:', manualHeaders);
+      const manualHeaders = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, '').toLowerCase());
       if (manualHeaders.length > 1) {
         headers.splice(0, headers.length, ...manualHeaders);
+      } else {
+        console.error('Both header parsing methods failed. CSV may be malformed.');
+        return [];
       }
     }
+    
+    // Additional validation - ensure we have reasonable number of headers
+    if (headers.length < 2) {
+      console.error('CSV headers appear invalid - too few columns detected:', headers);
+      return [];
+    }
+    
     // Parse data lines
      const data = lines.slice(1).map((line, lineIndex) => {
     // Skip empty lines
     if (line.trim() === '') return null;
       
-    const values = parseCSVLine(line);
+    try {
+      const values = parseCSVLine(line);
       
-    // Ensure values array has same length as headers (pad with empty strings)
-    if (values.length < headers.length) {
-      while (values.length < headers.length) values.push('');
-    } else if (values.length > headers.length) {
-      // If there are extra values, join the extras into the last field (defensive)
-      const extras = values.slice(headers.length - 1).join(',');
-      values.splice(headers.length - 1, values.length - (headers.length - 1), extras);
-    }
-  
-    const obj = {};
-    headers.forEach((header, index) => {
-      const rawValue = values[index] || '';
-      let decodedValue = decodeHTMLEntities(rawValue);
-    
-      if (header === 'category') {
-        decodedValue = decodedValue.replace(/^["'`]+|["'`]+$/g, '').trim();
+      // Apply manual split fallback if parsing failed (Safari compatibility)
+      if (values.length === 1 && values[0].includes(',')) {
+        const manualValues = line.split(',').map(v => v.trim().replace(/^"|"$/g, ''));
+        if (manualValues.length > 1) {
+          values.splice(0, values.length, ...manualValues);
+        }
+      }
+      
+      // Ensure values array has same length as headers (pad with empty strings)
+      if (values.length < headers.length) {
+        while (values.length < headers.length) values.push('');
+      } else if (values.length > headers.length) {
+        // If there are extra values, join the extras into the last field (defensive)
+        const extras = values.slice(headers.length - 1).join(',');
+        values.splice(headers.length - 1, values.length - (headers.length - 1), extras);
       }
     
-      obj[header] = decodedValue;
-    });
-  
-    if (lineIndex < 3) console.log(`Row ${lineIndex + 1} final object:`, obj);
-    return obj;
+      const obj = {};
+      headers.forEach((header, index) => {
+        const rawValue = values[index] || '';
+        let decodedValue = decodeHTMLEntities(rawValue);
+      
+        if (header === 'category') {
+          decodedValue = decodedValue.replace(/^["'`]+|["'`]+$/g, '').trim();
+        }
+      
+        obj[header] = decodedValue;
+      });
+    
+      // Validate object has required data
+      if (!obj.name || obj.name.trim() === '') {
+        return null;
+      }
+      
+      return obj;
+    } catch (error) {
+      console.error(`Error parsing CSV line ${lineIndex + 1}:`, error);
+      console.error('Problematic line:', line);
+      return null; // Skip this line and continue
+    }
   }).filter(Boolean);
     
-    console.log(`Parsed ${data.length} businesses from CSV`);
     return data;
   }
 
   // Helper function to parse a single CSV line with proper quote handling
   function parseCSVLine(line) {
+    // More robust CSV parsing that works consistently across browsers
     const values = [];
     let currentValue = '';
     let insideQuotes = false;
-    // Iterate through each character in the line
-    for (let i = 0; i < line.length; i++) {
+    let i = 0;
+    
+    while (i < line.length) {
       const char = line[i];
-      const nextChar = line[i + 1];
       
-      // Handle escaped quotes (\")
-      if (char === '\\' && nextChar === '"') {
-        currentValue += '"'; // Add the actual quote character
-        i++; // Skip the next character since we processed it
-      } else if (char === '"') {
-        insideQuotes = !insideQuotes;
-        // Don't add the quote character to the value
+      if (char === '"') {
+        if (insideQuotes) {
+          // Check if this is an escaped quote (double quote)
+          if (i + 1 < line.length && line[i + 1] === '"') {
+            currentValue += '"';
+            i += 2; // Skip both quotes
+          } else {
+            // End of quoted field
+            insideQuotes = false;
+            i++;
+          }
+        } else {
+          // Start of quoted field
+          insideQuotes = true;
+          i++;
+        }
       } else if (char === ',' && !insideQuotes) {
+        // Field separator outside quotes
         values.push(currentValue.trim());
         currentValue = '';
+        i++;
       } else {
+        // Regular character
         currentValue += char;
+        i++;
       }
     }
     
@@ -363,23 +360,15 @@
   }
   // Render cards for a specific container and its dynamic tabs
   function renderCards(container, dynamicTabs) {
-    console.log(`\n=== RENDERING CARDS for container: ${container.id} ===`);
-    console.log('Dynamic tabs to render:', dynamicTabs);
-    console.log('Available businesses:', businesses);
-    
     dynamicTabs.forEach(tab => {
-      console.log(`\nProcessing tab: ${tab.key} (${tab.id})`);
-      
       // Find the tab content panel with the specific container ID
       const panel = container.querySelector(`#${container.id}-${tab.id}`);
-      console.log('Found panel:', panel);
       if (!panel) {
         console.error(`Panel not found for tab ${tab.id}`);
         return;
       }
 
       const grid = panel.querySelector('.grid');
-      console.log('Found grid:', grid);
       if (!grid) {
         console.error(`Grid not found in panel for tab ${tab.id}`);
         return;
@@ -392,9 +381,6 @@
         : businesses
             .filter(b => b.category.toLowerCase() === tab.key.toLowerCase())
             .sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
-
-      console.log(`Items for tab ${tab.key}:`, items);
-      console.log(`Items count: ${items.length}`);
 
       items.forEach(b => {
         const card = document.createElement('article');
@@ -440,16 +426,6 @@
         fbLink.rel = 'noopener';
         fbLink.title = fbHandle ? `View ${b.name} on Facebook (@${fbHandle})` : 'Facebook';
         fbLink.innerHTML = `${heroicon('users', 'contact-icon', '20')} ${fbHandle}`;
-        
-        // const fbRaw = (b.facebook || '').trim();
-        // if (fbRaw) {
-        //   // build fb link and append
-        //   fbRaw.appendChild(fbLink);
-        //   fbLink.style.display = '';
-        // } else {
-        //   fbLink.style.display = 'none';
-        // }
-
         // Create website link if available
 
         const websiteLink = document.createElement('a');
@@ -560,7 +536,7 @@
         const badge = navItem.querySelector('.counter-badge');
         if (badge) {
           badge.textContent = items.length;
-          console.log(`Updated counter for ${tab.key}: ${items.length}`);
+          // console.log(`Updated counter for ${tab.key}: ${items.length}`);
         }
       }
     });
@@ -655,27 +631,22 @@
   function init() {
     // Process all x-stockists containers on the page
     const containers = document.querySelectorAll('.x-stockists');
-    console.log(`Found ${containers.length} x-stockists containers`);
     
     if (containers.length === 0) {
       console.error('No .x-stockists containers found on page');
       return;
     }
+    
     // Process each container individually
     containers.forEach((container, index) => {
       const containerId = container.id || `blf-auto-${index}`;
-      console.log(`\n=== Processing container ${index + 1}: ${containerId} ===`);
-      console.log('Container element:', container);
-      console.log('Container data-categories:', container.getAttribute('data-categories'));
       
       try {
         // Build dynamic tabs for this specific container
         const containerTabs = buildDynamicTabsForContainer(container, businesses);
-        console.log('✅ Built tabs for container:', containerTabs);
         
         // Initialize this specific container
         initializeContainer(containerId, containerTabs);
-        console.log('✅ Initialized container:', containerId);
       } catch (error) {
         console.error(`❌ Error processing container ${containerId}:`, error);
         console.error('Error stack:', error.stack);
@@ -712,14 +683,7 @@
 
   function fetchBusinessesAndInit() {
     // Use the new unified data endpoint that respects admin settings
-    // const wpRoot = window.location.origin + window.location.pathname.split('/wp-dev')[0] + '/wp-dev';
-    // const dataUrl = `${wpRoot}/wp-json/jq-stockists/v1/get-data`;
-    // const dataUrl = `${window.location.origin}/wp-json/jq-stockists/v1/get-data`;
     const dataUrl = myPluginData.apiUrl;
-
-
-
-    console.log('Fetching data from unified endpoint:', dataUrl);
     
     fetch(dataUrl)
       .then(res => {
@@ -736,32 +700,27 @@
         }
       })
       .then(response => {
-        console.log('Data response type:', response.type);
-        console.log('Data response:', response.data);
-        
         if (response.type === 'json') {
           // Database data - extract from response structure
           if (response.data && response.data.success && response.data.data) {
             businesses = response.data.data;
-            console.log(`Successfully loaded ${businesses.length} businesses from database`);
+            // console.log(`Successfully loaded ${businesses.length} businesses from database`);
           } else if (response.data && Array.isArray(response.data)) {
             // Direct array format
             businesses = response.data;
-            console.log(`Successfully loaded ${businesses.length} businesses from database`);
+            // console.log(`Successfully loaded ${businesses.length} businesses from database`);
           } else {
             // Empty or invalid database response
             businesses = [];
-            console.log('Database returned empty or invalid data');
+            // console.log('Database returned empty or invalid data');
           }
         } else {
           // CSV data - needs parsing
           businesses = parseCSV(response.data);
-          console.log(`Successfully loaded ${businesses.length} businesses from CSV`);
         }
         
         if (businesses.length === 0) {
           // Handle empty data gracefully - show "no businesses" message instead of error
-          console.log('No businesses found in data source');
           const container = document.querySelector('.x-stockists');
           if (container) {
             container.innerHTML = `
@@ -775,7 +734,6 @@
           return; // Exit early, don't call init()
         }
         
-        console.log('Sample business categories:', businesses.slice(0, 5).map(b => b.category));
         init();
       })
       .catch(err => {

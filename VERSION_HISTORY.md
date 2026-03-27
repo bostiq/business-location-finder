@@ -2,7 +2,10 @@
 
 ## Version History
 
-### v2.1.6.2 (Current)
+### v2.1.6.3 (Current)
+- **Cross platform fix**: Fixed issue on Safari where plugin wasn't displaying all the data
+
+### v2.1.6.2 (Previous)
 - **Data support**: Implemented new Facebook handle support for csv googlehseet data set
 
 ### v2.1.6.1 (Previous)
