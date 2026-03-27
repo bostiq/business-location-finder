@@ -10,8 +10,12 @@ test-*.html
 
 # Build and deployment scripts
 # *.sh
+*.sh
+Documentation/BUILD.md
+
 
 
 # AI temporary to-dos
 todo.md
+todo.txt
 discard.md

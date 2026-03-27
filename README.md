@@ -4,7 +4,7 @@ A dynamic, interactive business location finder with flexible category support, 
 
 ## **Key Features**
 
-### ✨ **Universal Flexibility**
+### **Universal Flexibility**
 - **Any Category Names**: Works with restaurants, services, retail, or any business type
 - **Dynamic Tab Generation**: Automatically creates tabs based on your data categories
 - **Dual Data Sources**: Choose between Google Sheets or local database storage
@@ -234,7 +234,7 @@ The settings are now at the top of the admin page with a clear form to update yo
 
 ---
 
-## 🛠️ **Technical Documentation**
+## **Technical Documentation**
 
 ### **System Information**
 
@@ -414,7 +414,7 @@ GET /wp-json/jq-stockists/v1/get-csv
 
 ## **For Developers**
 
-### **Database Integration** ✅
+### **Database Integration**
 The plugin now supports **dual data sources**:
 - **Google Sheets**: External CSV data via spreadsheet export
 - **Database Storage**: Local WordPress database with full CRUD operations
