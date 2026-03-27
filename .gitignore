@@ -9,7 +9,7 @@ prompt for version deployment.txt
 test-*.html
 
 # Build and deployment scripts
-*.sh
+# *.sh
 
 
 # AI temporary to-dos

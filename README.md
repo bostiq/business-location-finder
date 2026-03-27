@@ -2,7 +2,7 @@
 
 A dynamic, interactive business location finder with flexible category support, Google Sheets integration, and responsive design. Perfect for directories, stockist locators, and business listings of any type.
 
-## 🚀 **Key Features**
+## **Key Features**
 
 ### ✨ **Universal Flexibility**
 - **Any Category Names**: Works with restaurants, services, retail, or any business type
@@ -11,7 +11,7 @@ A dynamic, interactive business location finder with flexible category support, 
 - **Database Management**: Full CRUD operations via WordPress admin interface
 - **Responsive Design**: Mobile-friendly grid layout that adapts to any screen size
 
-### 🎯 **Core Functionality**
+### **Core Functionality**
 - **Tabbed Navigation**: Organized browsing by business categories
 - **Enhanced Search**: Real-time filtering by business name or suburb/location
 - **Dynamic Counters**: Badge counters showing businesses per category
@@ -20,7 +20,7 @@ A dynamic, interactive business location finder with flexible category support, 
 - **Smooth Animations**: Staggered card reveal animations
 - **Admin Interface**: Add, edit, and delete businesses with modal forms
 
-### 🔒 **Enterprise Security**
+### **Enterprise Security**
 - Input sanitization and XSS protection
 - CSRF protection with WordPress nonces
 - Capability-based access control
@@ -28,7 +28,7 @@ A dynamic, interactive business location finder with flexible category support, 
 
 ---
 
-## 📋 **Quick Setup Guide**
+## **Quick Setup Guide**
 
 ### 1. **Installation**
 - Upload the entire plugin folder to: `wp-content/plugins/business-location-finder/`
@@ -49,7 +49,7 @@ A dynamic, interactive business location finder with flexible category support, 
 
 ---
 
-## ⚙️ **Configuration & Usage**
+## **Configuration & Usage**
 
 ### **Changing Your Data Source**
 
@@ -157,9 +157,10 @@ The system adapts to ANY category structure:
 - "Clothing", "Electronics", "Home & Garden"
 
 ---
-# 📝 How to Change Your Google Sheets URL
 
-## WordPress Admin Access
+## How to Change Your Google Sheets URL
+
+### WordPress Admin Access
 
 1. **Go to WordPress Admin**
    - Log into your WordPress website admin area
@@ -173,7 +174,7 @@ The system adapts to ANY category structure:
    - Replace the URL in the **"Google Sheets Export URL"** field
    - Click **"Save Settings"**
 
-## How to Get Your Google Sheets Export URL
+### How to Get Your Google Sheets Export URL
 
 1. **Open your Google Sheet**
    - Go to your Google Sheet containing business data
@@ -190,7 +191,7 @@ The system adapts to ANY category structure:
    - Copy the generated URL
    - Paste it into the WordPress admin settings
 
-## Required CSV Format
+### Required CSV Format
 
 Your Google Sheet must have these columns (can be in any order):
 
@@ -200,30 +201,30 @@ Your Google Sheet must have these columns (can be in any order):
 - **address** - Full business address
 - **instagram** - Instagram handle (without @)
 
-## Examples of Flexible Categories
+### Examples of Flexible Categories
 
 The system now works with ANY category names:
 
-### Coffee Shops
+#### Coffee Shops
 - "Specialty Coffee", "Chain Coffee", "Local Roasters"
 
-### Restaurants  
+#### Restaurants  
 - "Fine Dining", "Casual Dining", "Fast Food", "Takeaway"
 
-### Services
+#### Services
 - "Legal Services", "Medical Services", "Home Services"
 
-### Retail
+#### Retail
 - "Clothing", "Electronics", "Home & Garden", "Books"
 
-## Current Default URL
+### Current Default URL
 
 If you haven't changed it yet, the system is using:
 ```
 https://docs.google.com/spreadsheets/d/1A8W-_GwPfCWbkqzyvSRKNC2x6bTzDCwBNS24tNuKCt8/export?format=csv&gid=1952886414
 ```
 
-## Admin Menu Location
+### Admin Menu Location
 
 **WordPress Admin → Location Finder → Main Settings Page**
 
@@ -364,7 +365,7 @@ GET /wp-json/jq-stockists/v1/get-csv
 
 ---
 
-## 🔧 **Development & Troubleshooting**
+## **Development & Troubleshooting**
 
 ### **Common Issues**
 
@@ -411,7 +412,7 @@ GET /wp-json/jq-stockists/v1/get-csv
 
 ---
 
-## 🛠️ **For Developers**
+## **For Developers**
 
 ### **Database Integration** ✅
 The plugin now supports **dual data sources**:
@@ -426,21 +427,21 @@ The plugin now supports **dual data sources**:
 
 ---
 
-## �📞 **Support & Maintenance**
+## **Support & Maintenance**
 
 ### **Current Status**
-✅ **Production Ready**: Fully functional and tested  
-✅ **Database Integration**: Local storage with Google Sheets fallback  
-✅ **Flexible Categories**: Works with any business type  
-✅ **Security Hardened**: Enterprise-level protection  
-✅ **Mobile Optimized**: Responsive across all devices  
-✅ **CRUD Operations**: Full admin management interface
+ **Production Ready**: Fully functional and tested  
+ **Database Integration**: Local storage with Google Sheets fallback  
+ **Flexible Categories**: Works with any business type  
+ **Security Hardened**: Enterprise-level protection  
+ **Mobile Optimized**: Responsive across all devices  
+ **CRUD Operations**: Full admin management interface
 
 ### **Roadmap**
-🚧 **Multi-Category Support**: Businesses in multiple categories  
-🚧 **CSV Import Interface**: Upload files directly via admin  
-🚧 **Advanced Filtering**: Multiple search criteria  
-🚧 **Custom Fields**: Additional business metadata  
+ **Multi-Category Support**: Businesses in multiple categories  
+ **CSV Import Interface**: Upload files directly via admin  
+ **Advanced Filtering**: Multiple search criteria  
+ **Custom Fields**: Additional business metadata  
 
 ### **Getting Help**
 
