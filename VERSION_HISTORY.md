@@ -2,7 +2,10 @@
 
 ## Version History
 
-### v2.1.6.3 (Current)
+### v2.1.6.4 (Current)
+- **Bug Fix**: Corrected '/' handling for addresses parsing
+
+### v2.1.6.3 (Previous)
 - **Cross platform fix**: Fixed issue on Safari where plugin wasn't displaying all the data
 
 ### v2.1.6.2 (Previous)

@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.1.6.3
-    // console.log('Running Biz Location Finder v2.1.6.3');
+    // Biz Location Finder v2.1.6.4
+    // console.log('Running Biz Location Finder v2.1.6.4');
   
   // -----------------------
   // Data
@@ -218,6 +218,10 @@
     
     // Fix escaped quotes that got mangled during line ending replacement
     normalizedCSV = normalizedCSV.replace(/\\"/g, '"');
+
+    // Fix JSON-escaped slashes
+    normalizedCSV = normalizedCSV.replace(/\\\//g, '/');
+
     
     // Split into lines
     const lines = normalizedCSV.trim().split('\n');
