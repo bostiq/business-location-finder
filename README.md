@@ -238,13 +238,13 @@ The settings are now at the top of the admin page with a clear form to update yo
 
 ### **System Information**
 
-**Current Version**: v2.1.6.4 (June 2026)
+**Current Version**: v2.1.6.5 (June 2026)
 
 **Component Versions:**
-- Frontend: stockists.js v2.1.6.4
-- Backend: biz-location-finder.php v2.1.6.4
-- Admin Interface: v2.1.6.4 (Database CRUD)
-- Styles: SASS/CSS v2.1.6.4 (Optimized)
+- Frontend: stockists.js v2.1.6.5
+- Backend: biz-location-finder.php v2.1.6.5
+- Admin Interface: v2.1.6.5 (Database CRUD)
+- Styles: SASS/CSS v2.1.6.5 (Optimized)
 
 ### **Architecture**
 
@@ -337,9 +337,10 @@ business-location-finder/
 
 See [VERSION_HISTORY.md](VERSION_HISTORY.md) for detailed version information and changelog.
 
-**Current Version**: v2.1.6.4 (June 2026)
+**Current Version**: v2.1.6.5 (June 2026)
 
 ### Recent Updates
+- **v2.1.6.5**: Added visual loading feedback while data is retrieved
 - **v2.1.6.4**: Corrected '/' handling for addresses parsing
 - **v2.1.6.3**: Fixed issue on Safari where plugin wasn't displaying all the data
 - - **v2.1.6.2**: Implemented new Facebook handle support for csv googlehseet data set

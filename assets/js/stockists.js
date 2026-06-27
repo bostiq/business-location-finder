@@ -1,6 +1,6 @@
 (function () {
-    // Biz Location Finder v2.1.6.4
-    // console.log('Running Biz Location Finder v2.1.6.4');
+    // Biz Location Finder v2.1.6.5
+    // console.log('Running Biz Location Finder v2.1.6.5');
   
   // -----------------------
   // Data
@@ -685,7 +685,31 @@
     if (active) filterPanel(active, '');
   }
 
+  // Injects the animated 3-dot loading indicator into each container.
+  // Called immediately when the data fetch begins so the user sees feedback right away.
+  function showLoadingIndicators() {
+    document.querySelectorAll('.x-stockists').forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'blf-loading';
+      el.innerHTML = '<h2>Loading</h2><span></span><span></span><span></span>';
+      
+      c.appendChild(el);
+    });
+  }
+
+  // Fades out and removes the loading indicator once data is ready (or on error).
+  // Adds the 'blf-loading-hide' class to trigger the CSS opacity transition,
+  // then removes the element from the DOM only after the transition completes.
+  function removeLoadingIndicators() {
+    document.querySelectorAll('.blf-loading').forEach(el => {
+      el.classList.add('blf-loading-hide');
+      // Remove from DOM after fade-out transition ends — avoids a jarring instant removal
+      el.addEventListener('transitionend', () => el.remove(), { once: true });
+    });
+  }
+
   function fetchBusinessesAndInit() {
+    showLoadingIndicators();
     // Use the new unified data endpoint that respects admin settings
     const dataUrl = myPluginData.apiUrl;
     
@@ -724,6 +748,7 @@
         }
         
         if (businesses.length === 0) {
+          removeLoadingIndicators();
           // Handle empty data gracefully - show "no businesses" message instead of error
           const container = document.querySelector('.x-stockists');
           if (container) {
@@ -738,9 +763,11 @@
           return; // Exit early, don't call init()
         }
         
+        removeLoadingIndicators();
         init();
       })
       .catch(err => {
+        removeLoadingIndicators();
         console.error('Failed to load business data:', err);
         
         // Show user-friendly error message

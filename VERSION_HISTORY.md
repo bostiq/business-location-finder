@@ -2,7 +2,10 @@
 
 ## Version History
 
-### v2.1.6.4 (Current)
+### v2.1.6.5 (Current)
+- **UI Enhancement**: Added visual loading feedback while data is retrieved
+
+### v2.1.6.4 (Previous)
 - **Bug Fix**: Corrected '/' handling for addresses parsing
 
 ### v2.1.6.3 (Previous)

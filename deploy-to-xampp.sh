@@ -4,7 +4,7 @@ set -euo pipefail
 PROJECT_NAME="biz-location-search"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PARENT_DIR="$(dirname "$SCRIPT_DIR")"
-XAMPP_PATH="/Applications/XAMPP/xamppfiles/htdocs/wp-dev/wp-content/plugins/biz-location-search-2.0.3"
+XAMPP_PATH="/Applications/XAMPP/xamppfiles/htdocs/wp-dev/wp-content/plugins/biz-location-search"
 
 # Extract version from plugin file
 VERSION=$(grep "define('BLF_VERSION'" "$SCRIPT_DIR/biz-location-finder.php" | sed "s/.*'\([^']*\)'.*/\1/")
